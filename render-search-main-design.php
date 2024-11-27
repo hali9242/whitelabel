@@ -1320,7 +1320,7 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew < $num_of_pages) { ?>
                 <li>
                     <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
-                        <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
+                        <div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
                             <span class="btn-prev"></span>
                         </div>
                         <div style="float:left;margin-top: 7px; cursor: pointer; margin-right: 22px;">
@@ -1363,7 +1363,7 @@ $lastTag = current(array_slice($tagResult, -1));
  if ($pagernew < $num_of_pages) { ?>
 	<li>
 		<div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
-			<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;">
+			<div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
 				<span class="hidden-xs"></span>
 			</div>
 			<div style="float:left;margin-top: 10px; cursor: pointer;">
@@ -1510,16 +1510,19 @@ console.log(array, array.reverse());
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 5px 10px !important; /* Add padding for a better click area */
+    padding: 10px 20px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
     
 }
+li.pg-btn.disabled:hover {
+    background-color: transparent;
+}
 
 li.pg-btn:hover {
-    background-color: #6BD9DE !important; /* Hover background color */
+    background-color: #6BD9DE ; /* Hover background color */
     color: #fff !important; /* Change text color on hover */
-	padding: 10px 20px !important;
+	
 }
 
 li.pg-btn.active {
