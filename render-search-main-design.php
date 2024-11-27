@@ -1301,10 +1301,20 @@ $lastTag = current(array_slice($tagResult, -1));
 													
 													
 				         		<!-- pagination box starts -->
+<div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden">
+</div>
 <div style="padding:10px 5px; clear: both;" id="pagination-box" type="<?php echo $type; ?>" dvalue="<?php echo $dvaluen; ?>" pagination-box="render-search-main-design" type="<?php echo $ttvalue; ?>" pager="<?php echo $pagernew; ?>" numpages="<?php echo $num_of_pages; ?>">
     <nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
         <ul class="pagination">
             <?php 
+            if ($type == '') { 
+                $ttvalue = '0';
+            } else if ($type == '0') { 
+                $ttvalue = '0';
+            } else {
+                $ttvalue = $dvaluen;
+            }
+            
             // "Previous" button
             if ($pagernew > 1) { ?>
                 <li>
@@ -1313,48 +1323,46 @@ $lastTag = current(array_slice($tagResult, -1));
                             <span class="btn-prev"></span>
                         </div>
                         <div style="float:left;margin-top: 7px; cursor: pointer; margin-right: 22px;">
-                            <span class="hidden-xs">Prev</span>
+                            <span class="hidden-xs"></span>
                         </div>
                     </div>
                 </li>
             <?php } ?>
 
             <?php 
+            if ($pagernew == '') $pagernew = 1;
             $maxVisible = 5; // Maximum number of pages visible around the current page
             $startPage = max(1, $pagernew - 2);
             $endPage = min($num_of_pages, $pagernew + 2);
 
-            // Display the first page link
-            if ($startPage > 1) {
-                echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
-                if ($startPage > 2) {
-                    echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
-                }
+            // Display the first page and ellipsis if needed
+            if ($startPage > 1) { ?>
+                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
+                <?php if ($startPage > 2) { ?>
+                    <li class="pg-btn disabled" style="cursor: default;">...</li>
+                <?php }
             }
 
-            // Display page numbers within the visible range
-            for ($i = $startPage; $i <= $endPage; $i++) {
-                if ($i == $pagernew) {
-                    echo '<li class="pg-btn active" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
-                } else {
-                    echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
-                }
-            }
+            // Display the page numbers in range
+            for ($i = $startPage; $i <= $endPage; $i++) { ?>
+                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
+            <?php }
 
-            // Display ellipsis if there's a gap between the end of the visible range and the total number of pages
+            // Display ellipsis and the last page if needed
             if ($endPage < $num_of_pages) {
-                if ($endPage < $num_of_pages - 1) {
-                    echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
-                }
-                echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
-            }
+                if ($endPage < $num_of_pages - 1) { ?>
+                    <li class="pg-btn disabled" style="cursor: default;">...</li>
+                <?php } ?>
+                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
+            <?php } ?>
 
+            <?php 
             // "Next" button
             if ($pagernew < $num_of_pages) { ?>
                 <li>
                     <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
                         <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;">
-                            <span class="hidden-xs">Next</span>
+                            <span class="hidden-xs"></span>
                         </div>
                         <div style="float:left;margin-top: 10px; cursor: pointer;">
                             <span class="btn-next"></span>
@@ -1363,25 +1371,24 @@ $lastTag = current(array_slice($tagResult, -1));
                 </li>
             <?php } ?>
         </ul>
-        <?php if ($num_of_pages > 1) { ?>
-            <p>
+        <?php //if ($num_of_pages > 1) { ?>
+            <!-- <p>
                 <span>of&nbsp;</span>
                 <span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
                 <span>&nbsp;pages</span>
-            </p>
+            </p> -->
         </nav>
-        <?php } else { ?>
+        <?php //} else { ?>
             </ul>
-            <p>
+            <!-- <p>
                 <span>of&nbsp;</span>
                 <span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
                 <span>&nbsp;page</span>
             </p>
-        </nav>
-        <?php } ?>
+        </nav> -->
+        <?php// } ?>
 </div>
 <!-- pagination box ends -->
-
 			         	</div>
 					</div>
 				</div>
