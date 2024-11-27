@@ -1330,45 +1330,52 @@ $lastTag = current(array_slice($tagResult, -1));
             <?php } ?>
 
             <?php 
-           if ($pagernew == '') $pagernew = 1;
+           if ($pagernew == '') $pagernew = 1; // Set default page if none is provided
 		   $maxVisible = 5; // Maximum number of pages visible around the current page
-		   $startPage = max(1, $pagernew - 2);
-		   $endPage = min($num_of_pages, $pagernew + 2);
+		   $startPage = max(1, $pagernew - 2); // Ensure start page is at least 1
+		   $endPage = min($num_of_pages, $pagernew + 2); // Ensure end page doesn't exceed total pages
 		   
 		   // Display "Previous" button
 		   if ($pagernew > 1) {
+			   // Display active "Prev" button if not on the first page
 			   echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . ($pagernew - 1) . '" search="0">Prev</li>';
 		   } else {
-			   // If on the first page, disable the "Previous" button
+			   // Disable "Prev" button on the first page
 			   echo '<li class="pg-btn disabled" style="cursor: default;">Prev</li>';
 		   }
 		   
 		   // Display the first page and ellipsis if needed
 		   if ($startPage > 1) {
+			   // Display the first page link
 			   echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
 			   if ($startPage > 2) {
+				   // Show ellipsis if there is a gap between the first page and the start of the range
 				   echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
 			   }
 		   }
 		   
-		   // Display the page numbers within the visible range
+		   // Display page numbers within the visible range
 		   for ($i = $startPage; $i <= $endPage; $i++) {
-			   echo '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+			   $activeClass = ($pagernew == $i) ? 'active' : ''; // Add active class for the current page
+			   echo '<li class="pg-btn ' . $activeClass . '" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
 		   }
 		   
 		   // Display ellipsis and the last page if needed
 		   if ($endPage < $num_of_pages) {
 			   if ($endPage < $num_of_pages - 1) {
+				   // Show ellipsis if there is a gap before the last page
 				   echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
 			   }
+			   // Display the last page link
 			   echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
 		   }
 		   
 		   // Display "Next" button
 		   if ($pagernew < $num_of_pages) {
+			   // Display active "Next" button if not on the last page
 			   echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . ($pagernew + 1) . '" search="0">Next</li>';
 		   } else {
-			   // If on the last page, disable the "Next" button
+			   // Disable "Next" button on the last page
 			   echo '<li class="pg-btn disabled" style="cursor: default;">Next</li>';
 		   }
 		   
