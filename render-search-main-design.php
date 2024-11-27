@@ -1372,7 +1372,7 @@ $lastTag = current(array_slice($tagResult, -1));
 			   echo '<li class="pg-btn disabled" style="cursor: default;">Next</li>';
 		   }
 		   
-            <?php } ?>
+             ?>
         </ul>
         <?php //if ($num_of_pages > 1) { ?>
             <!-- <p>
