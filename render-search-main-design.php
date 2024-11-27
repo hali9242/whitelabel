@@ -1366,7 +1366,7 @@ $lastTag = current(array_slice($tagResult, -1));
 			<div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
 				<span class="hidden-xs"></span>
 			</div>
-			<div style="float:left;margin-top: 10px; cursor: pointer;">
+			<div style="float:left;margin-top: 7px; cursor: pointer;">
 				<span class="btn-next"></span>
 			</div>
 		</div>
@@ -1517,6 +1517,7 @@ li.pg-btn {
 }
 li.pg-btn.disabled:hover {
     background-color: transparent;
+	color:#000;
 }
 
 li.pg-btn:hover {
