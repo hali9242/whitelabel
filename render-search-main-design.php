@@ -1363,7 +1363,7 @@ if ($endPage < $num_of_pages) {
 }
 
 
-            <?php 
+          
             // "Next" button
             if ($pagernew < $num_of_pages) { ?>
                 <li>
