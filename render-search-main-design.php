@@ -1430,6 +1430,39 @@ if($url2 == $newurl[0]){
 ?>
   <!--script src="https://code.jquery.com/jquery-3.5.0.js"></script-->
 <script type="text/javascript">
+	document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.pg-btn').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = btn.getAttribute('pagerv'); // Get the clicked page number
+            updatePagination(page);
+        });
+    });
+});
+
+function updatePagination(pageNumber) {
+    // Update the content and pagination dynamically
+    fetch('pagination-handler.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `page=${pageNumber}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        // Replace the pagination and content areas
+        document.getElementById('pagination-box').innerHTML = data;
+        // Re-bind the event listeners after updating pagination
+        document.querySelectorAll('.pg-btn').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = btn.getAttribute('pagerv');
+                updatePagination(page);
+            });
+        });
+    })
+    .catch(error => console.error('Error updating pagination:', error));
+}
+
 	var flag = true;
 	if(flag){  
 	$(document).ready(function(){
