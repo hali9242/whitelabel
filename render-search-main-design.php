@@ -1508,7 +1508,7 @@ console.log(array, array.reverse());
     display: inline-block !important;
 }
 
-.pagination li a {
+li.pg-btn {
     text-decoration: none !important;
     padding: 5px 10px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
@@ -1516,13 +1516,13 @@ console.log(array, array.reverse());
     
 }
 
-.pagination li a:hover {
+li.pg-btn:hover {
     background-color: #6BD9DE !important; /* Hover background color */
     color: #fff !important; /* Change text color on hover */
 	padding: 10px 20px !important;
 }
 
-.pagination li a.active {
+li.pg-btn.active {
     background-color: #6BD9DE !important; /* Active page background color */
     color: #fff !important; /* Active page text color */
 }
