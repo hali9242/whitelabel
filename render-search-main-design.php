@@ -1331,37 +1331,37 @@ $lastTag = current(array_slice($tagResult, -1));
 
             <?php 
             if ($pagernew == '') $pagernew = 1;
-			$maxVisible = 5; // Maximum number of pages visible around the current page
-			$startPage = max(1, $pagernew - 2);
-			$endPage = min($num_of_pages, $pagernew + 2);
-			
-			// Display the first page and ellipsis if needed
-			if ($startPage > 1) {
-				// Display the first page link
-				echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
-				
-				// Show ellipsis if there is a gap between the first page and the start of the range
-				if ($startPage > 2) {
-					echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
-				}
-			}
-			
-			// Display the page numbers within the visible range
-			for ($i = $startPage; $i <= $endPage; $i++) {
-				// Highlight the current page
-				echo '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
-			}
-			
-			// Display ellipsis and the last page if needed
-			if ($endPage < $num_of_pages) {
-				// Show ellipsis if there's a significant gap between the end page and the total number of pages
-				if ($endPage < $num_of_pages - 1) {
-					echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
-				}
-				// Display the last page link
-				echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
-			}
-			
+$maxVisible = 5; // Maximum number of pages visible around the current page
+$startPage = max(1, $pagernew - 2);
+$endPage = min($num_of_pages, $pagernew + 2);
+
+// Display the first page and ellipsis if needed
+if ($startPage > 1) {
+    // Display the first page link
+    echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
+    
+    // Show ellipsis if there is a gap between the first page and the start of the range
+    if ($startPage > 2) {
+        echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+    }
+}
+
+// Display the page numbers within the visible range
+for ($i = $startPage; $i <= $endPage; $i++) {
+    // Highlight the current page
+    echo '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+}
+
+// Display ellipsis and the last page if needed
+if ($endPage < $num_of_pages) {
+    // Show ellipsis if there's a significant gap between the end page and the total number of pages
+    if ($endPage < $num_of_pages - 1) {
+        echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+    }
+    // Display the last page link
+    echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
+}
+
 
             <?php 
             // "Next" button
