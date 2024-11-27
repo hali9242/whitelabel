@@ -874,7 +874,7 @@ $getWlwData = "SELECT * FROM wp_white_label_websites WHERE white_label_website_i
 								<!-- icons ends -->
 								<!--icons starts --
 								<div class="col-xs-6">
-								    <!-- sidebar small menu starts --
+								   sidebar small menu starts -->
 						<?php if($resourcetypes == 'video'){ ?>
 									<div class="input-group ng-scope">
 										<label for="cb-newsletter">
@@ -1335,13 +1335,34 @@ $lastTag = current(array_slice($tagResult, -1));
             $startPage = max(1, $pagernew - 2);
             $endPage = min($num_of_pages, $pagernew + 2);
 
-            // Display the first page and ellipsis if needed
-            if ($startPage > 1) { ?>
-                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
-                <?php if ($startPage > 2) { ?>
-                    <li class="pg-btn disabled" style="cursor: default;">...</li>
-                <?php }
-            }
+			if ($startPage > 1) {
+				// Display the first page link
+				echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
+				
+				// Display the ellipsis if there's a gap between the first and the current page
+				if ($startPage > 2) {
+					echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+				}
+			}
+			
+			// Display page numbers in between
+			for ($i = $startPage; $i <= $endPage; $i++) {
+				if ($i == $currentPage) {
+					echo '<li class="pg-btn active" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+				} else {
+					echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+				}
+			}
+			
+			// Display ellipsis if there's a gap between the last page and the end
+			if ($endPage < $num_of_pages - 1) {
+				echo '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+			}
+			
+			// Display the last page link
+			if ($endPage < $num_of_pages) {
+				echo '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
+			}
 
             // Display the page numbers in range
             for ($i = $startPage; $i <= $endPage; $i++) { ?>
