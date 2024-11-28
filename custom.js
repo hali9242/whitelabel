@@ -507,9 +507,20 @@ var sync1 = $.ajax({
             $(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
         }
 
-        // Add the active class to the clicked page button
-        $(".pg-btn").removeClass("active"); // Remove active class from all buttons
-        $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the current page button
+        // Debugging log to check if the correct pager value is set
+        console.log("Current Pager Value:", pager);
+
+        // Remove active class from all buttons
+        $(".pg-btn").removeClass("active");
+        
+        // Debugging log to check if the correct button is being targeted
+        console.log("Adding active class to button with pagerv:", pager);
+
+        // Add active class to the current page button
+        $(".pg-btn[pagerv='" + pager + "']").addClass("active");
+
+        // Log to verify if the active class was applied
+        console.log("Active class applied to:", $(".pg-btn[pagerv='" + pager + "']").get(0));
     }
 });
 
@@ -529,6 +540,7 @@ var sync2 = $.ajax({
 $.when(sync1, sync2).done(function(result2, result1) {
     console.log('both call finished');
 });
+
 
 			
 });
