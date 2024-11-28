@@ -1300,7 +1300,7 @@ $lastTag = current(array_slice($tagResult, -1));
 				         		</a></div>
 													
 													
-				         <<!-- Pagination box starts -->
+				         <!-- Pagination box starts -->
 <div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden"></div>
 <div style="padding:10px 5px; clear: both;" id="pagination-box" type="<?php echo $type; ?>" dvalue="<?php echo $dvaluen; ?>" pagination-box="render-search-main-design" type="<?php echo $ttvalue; ?>" pager="<?php echo $pagernew; ?>" numpages="<?php echo $num_of_pages; ?>">
     <nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
