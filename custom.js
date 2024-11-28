@@ -148,6 +148,9 @@ if(/^[a-zA-Z][\sa-zA-Z0-9\[\]\(\)]*$/.test(name) == false) {
 				//console.log(tr_str);
 			    $(".resource-column-new").append(tr_str);
 			}
+			 // Update the active class on pagination
+			 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+			 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 			      
 		}
 	});
@@ -424,6 +427,9 @@ $(document).on('click', '.next-btn', function()
 			    $(".pg-btn").removeAttr("typevalue").attr('typevalue', type);
 			    $(".next-btn").removeAttr("search").attr('search', search).removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
 			}
+			 // Update the active class on pagination
+			 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+			 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 		}
 	});
 	var postDatan=JSON.stringify({"dvalue": type, "pager": pager, "lifestage": lifestage, "search": search,"sort":sortid, "tags": alltags});
@@ -437,6 +443,7 @@ $(document).on('click', '.next-btn', function()
 			$("#pagination-box-n").removeClass('hidden').html(new_data.message);
 			$("#pagination-box").addClass('hidden').html('');
 		}
+		 
 	});
 	$.when(sync1, sync2).done(function(result2, result1) {
     	console.log('both call finished');
@@ -699,6 +706,9 @@ $(document).on('keyup', '.autocomplete-tag-input', function()
 				var tr_str = message;
 				$(".resource-column-new").append(tr_str);
 			}
+			 // Update the active class on pagination
+			 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+			 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 		}
 	});
 	var postDatan=JSON.stringify({"dvalue": dvalue, "lifestage": lifestage, "type": rtypes, "page": pager, "tags": alltags, "search": search, "sort": sort, "tags": tags});
@@ -816,6 +826,9 @@ $(document).on('keyup', '.autocomplete-tag-input', function()
 				var tr_str = message;
 				$(".resource-column-new").append(tr_str);
 	        }	
+			 // Update the active class on pagination
+			 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+			 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 		}
 	});
 	// "dvalue": dvalue, "lifestage": lifestage, "type": rtypes, "page": pager, "tags": tags, "search": search, "sort": sort
@@ -970,6 +983,9 @@ console.log(arrayUniqueByKey);
 					var tr_str = message;
 					$(".resource-column-new").removeClass('hidden').append(tr_str);
 				}
+				 // Update the active class on pagination
+				 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+				 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 			}
 		});
     }
@@ -1218,6 +1234,9 @@ var locationValue = (new URL(location.href)).searchParams.get('tags');
 								$(".resource-column-new").removeClass('hidden').append(tr_str);
 							}
 						}
+						 // Update the active class on pagination
+						 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+						 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 					}
 			});
 			 //var postDatan=JSON.stringify({"dvalue":"tags","page":"1","tagid": newtag0, "lifestage": lifestage, "rtypes": rtypes, "tags": alltags,"sort":sortid, "search": search});
@@ -1856,6 +1875,9 @@ var locationValue = (new URL(location.href)).searchParams.get('tags');
 			                var tr_str = message;
 			                $(".resource-column-new").append(tr_str);
 			            }
+						 // Update the active class on pagination
+						 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+						 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 					}
 			});
 			 var postDatan=JSON.stringify({"dvalue": dvalue, "page": pager, "tags": alltags});
@@ -2054,6 +2076,9 @@ alert(query);
 			                var tr_str = message;
 			                $(".resource-column-new").append(tr_str);
 			            }
+						 // Update the active class on pagination
+						 $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+						 $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
 					}
 			});
 			 var postDatan=JSON.stringify({"dvalue": dvalue, "pager": pager, "lifestage": lifestage, "search": search, "sort": sort, "tags": alltags});
