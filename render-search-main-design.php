@@ -1344,47 +1344,6 @@ $lastTag = current(array_slice($tagResult, -1));
 </div>
 <!-- pagination box ends -->
 
-<!-- JavaScript with AJAX for dynamic pagination -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const paginationContainer = document.getElementById('pagination-links');
-    
-    paginationContainer.addEventListener('click', function (event) {
-        if (event.target.classList.contains('pg-btn') && !event.target.classList.contains('disabled')) {
-            const page = parseInt(event.target.getAttribute('data-page'), 10);
-            if (!isNaN(page)) {
-                console.log('Page clicked:', page); // Log to check the clicked page
-                
-                // Send an AJAX request to load the new page content
-                fetch(`load_page.php?page=${page}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById('content-container').innerHTML = data;
-                        // Optionally update the current pagination state (e.g., highlight active page)
-                        updatePaginationState(page);
-                    })
-                    .catch(error => console.error('Error loading page:', error));
-            }
-        }
-    });
-
-    function updatePaginationState(activePage) {
-        const buttons = paginationContainer.querySelectorAll('.pg-btn');
-        buttons.forEach(button => {
-            if (parseInt(button.getAttribute('data-page'), 10) === activePage) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
-        });
-    }
-});
-</script>
 
 			         	</div>
 					</div>
@@ -1434,6 +1393,47 @@ if($url2 == $newurl[0]){
 ?>
   <!--script src="https://code.jquery.com/jquery-3.5.0.js"></script-->
 <script type="text/javascript">
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const paginationContainer = document.getElementById('pagination-links');
+    
+    paginationContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('pg-btn') && !event.target.classList.contains('disabled')) {
+            const page = parseInt(event.target.getAttribute('data-page'), 10);
+            if (!isNaN(page)) {
+                console.log('Page clicked:', page); // Log to check the clicked page
+                
+                // Send an AJAX request to load the new page content
+                fetch(`load_page.php?page=${page}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById('content-container').innerHTML = data;
+                        // Optionally update the current pagination state (e.g., highlight active page)
+                        updatePaginationState(page);
+                    })
+                    .catch(error => console.error('Error loading page:', error));
+            }
+        }
+    });
+
+    function updatePaginationState(activePage) {
+        const buttons = paginationContainer.querySelectorAll('.pg-btn');
+        buttons.forEach(button => {
+            if (parseInt(button.getAttribute('data-page'), 10) === activePage) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+});
+
 
 
 	var flag = true;
