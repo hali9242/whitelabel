@@ -1313,7 +1313,7 @@ $lastTag = current(array_slice($tagResult, -1));
 											}else{
 												$ttvalue = $dvaluen;
 											}
-												if ($pagernew > 1) {
+												if ($pagernew < $num_of_pages) {
 												//}
 													?>
 													<li test="sdfdsdf">
@@ -1322,7 +1322,7 @@ $lastTag = current(array_slice($tagResult, -1));
 												<span class="btn-prev"></span>
 											</div>
 							              	<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-							              		<span class="hidden-xs">Prev</span>
+							              		<span class="hidden-xs"></span>
 											</div>
 								        </div>
 								    </li>
@@ -1349,27 +1349,27 @@ $lastTag = current(array_slice($tagResult, -1));
 								if ($pagernew < $num_of_pages) {?>
                                                <li test="sdfdsdf">
 								              	<div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
-								              		<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
+								              		<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
 								              		<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
 								              	</div>
 								              </li>
 								<?php } ?>
 								<?php if($num_of_pages > 1){ ?>
 								</ul>
-								            <p>
+								            <!-- <p>
 								            	<span>of&nbsp;</span>
 								            	<span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
 								            	<span>&nbsp;pages</span>
-								            </p>
+								            </p> -->
 								          </nav>
 								<?php } else { ?>
 								</ul>
-								            <p>
+								            <!-- <p>
 								            	<span>of&nbsp;</span>
 								            	<span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
 								            	<span>&nbsp;page</span>
 								            </p>
-								          </nav>
+								          </nav> -->
 								<?php } ?>
 				         		</div>
 													
