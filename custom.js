@@ -513,7 +513,7 @@ var sync1 = $.ajax({
             $(".pg-btn").removeAttr("typevalue").attr('typevalue', type);
             $(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
         }
-		
+
 	}
 
 });
@@ -2104,49 +2104,94 @@ alert(query);
 	    });
 	    return vars;
 	  }
-	  $(document).on('click', '.pg-btn', function() {
-		//console.log("Pagination button clicked");
-		// Retrieve attributes from the clicked button
-		var pager = $(this).attr("pagerv");
-		 
-		var lifestage = $(this).attr("lifestage");
-		var search = $(this).attr("search");
-		var resourcetypes = $(this).attr("resourcetypes");
-		var sortid = $(this).attr("sort");
-		var tags = $(this).attr("tags");
-	
-		// Retrieve additional attributes dynamically if required
-		var type = $('.lifestagec').attr("resourcetypes") || resourcetypes;
-		sortid = $('.siderbar-small-category').attr("sort") || sortid;
-		lifestage = $('.siderbar-small-category').attr("lifestage") || lifestage;
-		search = $('.siderbar-small-category').attr("search") || search;
-	
-		// Debugging logs to verify variables
-		console.log("Pager:", pager);
-		console.log("Type:", type);
-		console.log("Lifestage:", lifestage);
-		console.log("Search:", search);
-		console.log("Resourcetypes:", resourcetypes);
-		console.log("Sort ID:", sortid);
-		console.log("Tags:", tags);
-	
-		// Update the content dynamically (as needed)
-		fetchDataAndPagination({
-			pager: pager,
-			type: type,
-			lifestage: lifestage,
-			search: search,
-			resourcetypes: resourcetypes,
-			sort: sortid,
-			tags: tags
-		});
-		// Remove active class from all pagination buttons
-		$('.pg-btn').removeClass('active');
+	  $(document).ready(function() {
+    // Event listener for pagination buttons
+    $(document).on('click', '.pg-btn', function() {
+        // Retrieve attributes from the clicked button
+        var pager = $(this).attr("pagerv");
+        var lifestage = $(this).attr("lifestage");
+        var search = $(this).attr("search");
+        var resourcetypes = $(this).attr("resourcetypes");
+        var sortid = $(this).attr("sort");
+        var tags = $(this).attr("tags");
 
-		// Add active class to the clicked button
-		$(this).addClass('active');
-		
-	});
+        // Remove active class from all pagination buttons
+        $('.pg-btn').removeClass('active');
+
+        // Add active class to the clicked button
+        $(this).addClass('active');
+
+        // Fetch new data based on the current state
+        fetchDataAndPagination({
+            pager: pager,
+            type: resourcetypes,
+            lifestage: lifestage,
+            search: search,
+            sort: sortid,
+            tags: tags
+        });
+    });
+
+    // Function to fetch data and handle pagination
+    function fetchDataAndPagination(params) {
+        $(".content-inner-page").addClass('hidden').html('').fadeIn(5000);
+        $(".resource-column-new").html('<div style="margin-left: 42%; margin-top: 17%; padding-bottom: 30%;"><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> loading</div>');
+
+        // Update the URL without reloading the page
+        if (history.pushState) {
+            window.history.pushState("object or string", "BALANCE Financial Fitness Program  |  Resources", getURLForCache(params.pager));
+        } else {
+            document.location.href = getURLForCache(params.pager);
+        }
+
+        var postData = JSON.stringify({
+            type: params.type,
+            pager: params.pager,
+            lifestage: params.lifestage,
+            search: params.search,
+            sort: params.sort,
+            tags: params.tags
+        });
+
+        $.ajax({
+            type: "POST",
+            url: $.web_url + "includes/core/resource_pagination_content" + $.extn,
+            dataType: 'JSON',
+            data: { data: postData },
+            cache: false,
+            success: function(new_data) {
+                var len = new_data.length;
+                $(".resource-column-new").html('');
+                for (var i = 0; i < len; i++) {
+                    var message = new_data[i].message;
+                    $(".resource-column-new").append(message);
+                }
+            }
+        });
+
+        // Handle pagination updates
+        var postDatan = JSON.stringify({
+            dvalue: params.type,
+            pager: params.pager,
+            lifestage: params.lifestage,
+            search: params.search,
+            sort: params.sort,
+            tags: params.tags
+        });
+
+        $.ajax({
+            type: "POST",
+            url: $.web_url + "includes/core/pagination_new_check" + $.extn,
+            dataType: 'JSON',
+            data: { data: postDatan },
+            cache: false,
+            success: function(new_data) {
+                $("#pagination-box-n").removeClass('hidden').html(new_data.message);
+                $("#pagination-box").addClass('hidden').html('');
+            }
+        });
+    }
+});
 	
 	
 
