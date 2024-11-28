@@ -2077,9 +2077,7 @@ alert(query);
 	  $(document).on('click', '.pg-btn', function() {
 		// Retrieve attributes from the clicked button
 		var pager = $(this).attr("pagerv");
-		 // Update active class
-		 $(".pg-btn").removeClass("active");
-		 $(this).addClass("active");
+		 
 		var lifestage = $(this).attr("lifestage");
 		var search = $(this).attr("search");
 		var resourcetypes = $(this).attr("resourcetypes");
@@ -2111,6 +2109,10 @@ alert(query);
 			sort: sortid,
 			tags: tags
 		});
+		// Manage active class
+		$(".pg-btn").removeClass("active"); // Remove active class from all pagination buttons
+		$(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
+	});
 	});
 	
 	
