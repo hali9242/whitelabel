@@ -2097,7 +2097,7 @@ alert(query);
 	    return vars;
 	  }
 	  $(document).on('click', '.pg-btn', function() {
-		console.log("Pagination button clicked");
+		//console.log("Pagination button clicked");
 		// Retrieve attributes from the clicked button
 		var pager = $(this).attr("pagerv");
 		 
@@ -2132,10 +2132,12 @@ alert(query);
 			sort: sortid,
 			tags: tags
 		});
-		// Manage active class
-		$(".pg-btn").removeClass("active"); // Remove active class from all pagination buttons
-		$(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the clicked button
-	});
+		// Remove active class from all pagination buttons
+		$('.pg-btn').removeClass('active');
+
+		// Add active class to the clicked button
+		$(this).addClass('active');
+		
 	});
 	
 	
