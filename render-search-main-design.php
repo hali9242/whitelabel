@@ -1300,49 +1300,80 @@ $lastTag = current(array_slice($tagResult, -1));
 				         		</a></div>
 													
 													
-				         		<!-- pagination box starts -->
-<div style="padding:10px 5px; clear: both;" id="pagination-box" class="hidden">
-    <nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
-        <ul class="pagination" id="pagination-links">
-            <?php 
-            // Assuming $pagernew and $num_of_pages are defined elsewhere in your PHP code
-            if ($pagernew == '') $pagernew = 1;
-            $maxVisible = 5; // Maximum number of pages visible around the current page
-            $startPage = max(1, $pagernew - 2);
-            $endPage = min($num_of_pages, $pagernew + 2);
-
-            // Display the "Previous" button
-            if ($pagernew > 1) { ?>
-                <li class="pg-btn" data-page="<?php echo ($pagernew - 1); ?>">Prev</li>
-            <?php } ?>
-
-            <!-- Display the page numbers -->
-            <?php if ($startPage > 1) { ?>
-                <li class="pg-btn" data-page="1">1</li>
-                <?php if ($startPage > 2) { ?>
-                    <li class="pg-btn disabled">...</li>
-                <?php } ?>
-            <?php } ?>
-
-            <?php for ($i = $startPage; $i <= $endPage; $i++) { ?>
-                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" data-page="<?php echo $i; ?>"><?php echo $i; ?></li>
-            <?php } ?>
-
-            <?php if ($endPage < $num_of_pages) { ?>
-                <?php if ($endPage < $num_of_pages - 1) { ?>
-                    <li class="pg-btn disabled">...</li>
-                <?php } ?>
-                <li class="pg-btn" data-page="<?php echo $num_of_pages; ?>"><?php echo $num_of_pages; ?></li>
-            <?php } ?>
-
-            <!-- Display the "Next" button -->
-            <?php if ($pagernew < $num_of_pages) { ?>
-                <li class="pg-btn" data-page="<?php echo ($pagernew + 1); ?>">Next</li>
-            <?php } ?>
-        </ul>
-    </nav>
-</div>
-<!-- pagination box ends -->
+				         <!-- pagination box starts -->
+						 <div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden">
+				         		</div>
+				         		<div style="padding:10px 5px; clear: both;" id="pagination-box" type="<?php echo $type; ?>" dvalue="<?php echo $dvaluen; ?>" pagination-box="render-search-main-design" type="<?php echo $ttvalue; ?>" pager="<?php echo $pagernew; ?>" numpages="<?php echo $num_of_pages; ?>">
+				         		<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
+            								<ul class="pagination">
+											<?php if($type == ''){ 
+												$ttvalue = '0';
+											}else if($type == '0'){ 
+												$ttvalue = '0';
+											}else{
+												$ttvalue = $dvaluen;
+											}
+												if ($pagernew > 1) {
+												//}
+													?>
+													<li test="sdfdsdf">
+                                 	  	<div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
+                                 		   <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
+												<span class="btn-prev"></span>
+											</div>
+							              	<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
+							              		<span class="hidden-xs">Prev</span>
+											</div>
+								        </div>
+								    </li>
+								<?php }?>
+								<?php 
+								if($pagernew=='')$pagernew=1;
+								$offs = $num_of_pages-$pagernew;
+								if($offs<=5) $pagernews=$pagernew-(5-$offs);
+								else $pagernews=$pagernew;
+								
+								if ($num_of_pages == "0") {
+									$pagerData = "0";
+								} else {
+									$pagerData = "1";
+								}
+								
+								//for($i = $pagerData; $i <= min($pagernew + 5, $num_of_pages); $i++) {
+									for ($i=max(1, $pagernews - 0); $i <= min($pagernews + 5, $num_of_pages); $i++) {
+									
+									?>
+									<li class="pg-btn <?php echo ($pagernew == $i || $pagerData == $i ? 'active' : ''); ?>" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
+								<?php 
+								}
+								if ($pagernew < $num_of_pages) {?>
+                                               <li test="sdfdsdf">
+								              	<div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
+								              		<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
+								              		<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
+								              	</div>
+								              </li>
+								<?php } ?>
+								<?php if($num_of_pages > 1){ ?>
+								</ul>
+								            <p>
+								            	<span>of&nbsp;</span>
+								            	<span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
+								            	<span>&nbsp;pages</span>
+								            </p>
+								          </nav>
+								<?php } else { ?>
+								</ul>
+								            <p>
+								            	<span>of&nbsp;</span>
+								            	<span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
+								            	<span>&nbsp;page</span>
+								            </p>
+								          </nav>
+								<?php } ?>
+				         		</div>
+													
+													<!-- pagination box ends -->
 
 
 			         	</div>
