@@ -485,45 +485,51 @@ $(document).on('click', '.prv-btn', function(){
 		//document.location.href = murl+'&pager='+pager;
 		document.location.href = getURLForCache(pager);
 	}
-	var postData=JSON.stringify({"type": type, "pager": pager, "lifestage": lifestage, "search": search,"sort":sortid, "tags": alltags});
-	var sync1 = $.ajax({  
-		type: "POST",  
-		url: $.web_url+"includes/core/resource_pagination_content"+$.extn,
-		dataType: 'JSON', //this is what we expect our returned data as  
-		data: {data:postData},
-		cache: false,  
-		success: function(new_data){
-			var len = new_data.length;
-			$(".resource-column-new").html('');
-			$(".content-inner-page").addClass('hidden');
-			$(".resource-column-new").removeClass('hidden');
-			$("#cd-"+name+ " span .fake-label").removeClass('fake-label').addClass('fake-label-active');
-			for(var i=0; i < len; i++){
-				var message = new_data[i].message;
-				var tr_str = message;
-				var pagern = parseInt(pager) - 1;
-				$(".resource-column-new").append(tr_str);
-				$(".pg-btn").removeAttr("typevalue").attr('typevalue', type);
-				$(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
-			}
-		}
-	});
-	var postDatan=JSON.stringify({"dvalue": type, "pager": pager, "lifestage": lifestage, "search": search,"sort":sortid, "tags": alltags});
-	var sync2 = $.ajax({  
-		type: "POST",  
-		url: $.web_url+"includes/core/pagination_new_check"+$.extn,
-		dataType: 'JSON', //this is what we expect our returned data as  
-		data: {data:postDatan},
-		cache: false,  
-		success: function(new_data)
-		{
-			$("#pagination-box-n").removeClass('hidden').html(new_data.message);
-			$("#pagination-box").addClass('hidden').html('');
-		}
-	});
-	$.when(sync1, sync2).done(function(result2, result1) {
-    	console.log('both call finished');
-	});
+	var postData = JSON.stringify({"type": type, "pager": pager, "lifestage": lifestage, "search": search, "sort": sortid, "tags": alltags});
+var sync1 = $.ajax({
+    type: "POST",
+    url: $.web_url + "includes/core/resource_pagination_content" + $.extn,
+    dataType: 'JSON', // Expecting returned data as JSON
+    data: {data: postData},
+    cache: false,
+    success: function(new_data) {
+        var len = new_data.length;
+        $(".resource-column-new").html('');
+        $(".content-inner-page").addClass('hidden');
+        $(".resource-column-new").removeClass('hidden');
+        $("#cd-" + name + " span .fake-label").removeClass('fake-label').addClass('fake-label-active');
+        for (var i = 0; i < len; i++) {
+            var message = new_data[i].message;
+            var tr_str = message;
+            var pagern = parseInt(pager) - 1;
+            $(".resource-column-new").append(tr_str);
+            $(".pg-btn").removeAttr("typevalue").attr('typevalue', type);
+            $(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
+        }
+
+        // Add the active class to the clicked page button
+        $(".pg-btn").removeClass("active"); // Remove active class from all buttons
+        $(".pg-btn[pagerv='" + pager + "']").addClass("active"); // Add active class to the current page button
+    }
+});
+
+var postDatan = JSON.stringify({"dvalue": type, "pager": pager, "lifestage": lifestage, "search": search, "sort": sortid, "tags": alltags});
+var sync2 = $.ajax({
+    type: "POST",
+    url: $.web_url + "includes/core/pagination_new_check" + $.extn,
+    dataType: 'JSON',
+    data: {data: postDatan},
+    cache: false,
+    success: function(new_data) {
+        $("#pagination-box-n").removeClass('hidden').html(new_data.message);
+        $("#pagination-box").addClass('hidden').html('');
+    }
+});
+
+$.when(sync1, sync2).done(function(result2, result1) {
+    console.log('both call finished');
+});
+
 			
 });
 $(document).on('keyup', '.autocomplete-tag-input', function()
