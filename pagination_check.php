@@ -436,7 +436,7 @@ if ($page > 1) {
 				<span class="btn-prev"></span>
 			</div>
 			<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-				<span class="hidden-xs">Prev</span>
+				<span class="hidden-xs"></span>
 			</div>
 		</div>
 	</li>';
