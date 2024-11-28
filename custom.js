@@ -2077,6 +2077,9 @@ alert(query);
 	  $(document).on('click', '.pg-btn', function() {
 		// Retrieve attributes from the clicked button
 		var pager = $(this).attr("pagerv");
+		 // Update active class
+		 $(".pg-btn").removeClass("active");
+		 $(this).addClass("active");
 		var lifestage = $(this).attr("lifestage");
 		var search = $(this).attr("search");
 		var resourcetypes = $(this).attr("resourcetypes");
