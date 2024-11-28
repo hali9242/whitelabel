@@ -99,7 +99,7 @@ $output = '';
 $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
     <ul class="pagination">';
 								
-if ($page > 1) {
+if ($page < $totalpages) {
 	if($totalpages != 1){
 	$output .='<li>
 		<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'">
