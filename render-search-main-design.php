@@ -1301,99 +1301,91 @@ $lastTag = current(array_slice($tagResult, -1));
 													
 													
 				         		<!-- pagination box starts -->
-<div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden">
-</div>
-<div style="padding:10px 5px; clear: both;" id="pagination-box" type="<?php echo $type; ?>" dvalue="<?php echo $dvaluen; ?>" pagination-box="render-search-main-design" type="<?php echo $ttvalue; ?>" pager="<?php echo $pagernew; ?>" numpages="<?php echo $num_of_pages; ?>">
+<div style="padding:10px 5px; clear: both;" id="pagination-box" class="hidden">
     <nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
-        <ul class="pagination">
+        <ul class="pagination" id="pagination-links">
             <?php 
-            if ($type == '') { 
-                $ttvalue = '0';
-            } else if ($type == '0') { 
-                $ttvalue = '0';
-            } else {
-                $ttvalue = $dvaluen;
-            }
-            
-            // "Previous" button
-            // "Previous" button
-            if ($pagernew < $num_of_pages) { ?>
-                <li>
-                    <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
-                        <div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
-                            <span class="btn-prev"></span>
-                        </div>
-                        <div style="float:left;margin-top: 7px; cursor: pointer; margin-right: 22px;">
-                            <span class="hidden-xs"></span>
-                        </div>
-                    </div>
-                </li>
-            <?php } ?>
-            <?php 
-           
+            // Assuming $pagernew and $num_of_pages are defined elsewhere in your PHP code
             if ($pagernew == '') $pagernew = 1;
             $maxVisible = 5; // Maximum number of pages visible around the current page
             $startPage = max(1, $pagernew - 2);
             $endPage = min($num_of_pages, $pagernew + 2);
 
-            // Display the first page and ellipsis if needed
-            if ($startPage > 1) { ?>
-                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
+            // Display the "Previous" button
+            if ($pagernew > 1) { ?>
+                <li class="pg-btn" data-page="<?php echo ($pagernew - 1); ?>">Prev</li>
+            <?php } ?>
+
+            <!-- Display the page numbers -->
+            <?php if ($startPage > 1) { ?>
+                <li class="pg-btn" data-page="1">1</li>
                 <?php if ($startPage > 2) { ?>
-                    <li class="pg-btn disabled" style="cursor: default;">...</li>
-                <?php }
-            }
+                    <li class="pg-btn disabled">...</li>
+                <?php } ?>
+            <?php } ?>
 
-            // Display the page numbers in range
-            for ($i = $startPage; $i <= $endPage; $i++) { ?>
-                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
-            <?php }
+            <?php for ($i = $startPage; $i <= $endPage; $i++) { ?>
+                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" data-page="<?php echo $i; ?>"><?php echo $i; ?></li>
+            <?php } ?>
 
-            // Display ellipsis and the last page if needed
-            if ($endPage < $num_of_pages)
-                if ($endPage < $num_of_pages - 1) { ?>
-                    <li class="pg-btn disabled" style="cursor: default;">...</li>
-					
-               <?php } ?>
-                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
-            <?php
+            <?php if ($endPage < $num_of_pages) { ?>
+                <?php if ($endPage < $num_of_pages - 1) { ?>
+                    <li class="pg-btn disabled">...</li>
+                <?php } ?>
+                <li class="pg-btn" data-page="<?php echo $num_of_pages; ?>"><?php echo $num_of_pages; ?></li>
+            <?php } ?>
 
-
- // "Next" button
- if ($pagernew < $num_of_pages) { ?>
-	<li>
-		<div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
-			<div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
-				<span class="hidden-xs"></span>
-			</div>
-			<div style="float:left;margin-top: 7px; cursor: pointer;">
-				<span class="btn-next"></span>
-			</div>
-		</div>
-	</li>
-<?php } 
-
-		   
-             ?>
+            <!-- Display the "Next" button -->
+            <?php if ($pagernew < $num_of_pages) { ?>
+                <li class="pg-btn" data-page="<?php echo ($pagernew + 1); ?>">Next</li>
+            <?php } ?>
         </ul>
-        <?php //if ($num_of_pages > 1) { ?>
-            <!-- <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
-                <span>&nbsp;pages</span>
-            </p> -->
-        </nav>
-        <?php //} else { ?>
-            </ul>
-            <!-- <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding" dvalue="sdfsd"><?php echo $num_of_pages; ?></span>
-                <span>&nbsp;page</span>
-            </p>
-        </nav> -->
-        <?php// } ?>
+    </nav>
 </div>
 <!-- pagination box ends -->
+
+<!-- JavaScript with AJAX for dynamic pagination -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const paginationContainer = document.getElementById('pagination-links');
+    
+    paginationContainer.addEventListener('click', function (event) {
+        if (event.target.classList.contains('pg-btn') && !event.target.classList.contains('disabled')) {
+            const page = parseInt(event.target.getAttribute('data-page'), 10);
+            if (!isNaN(page)) {
+                console.log('Page clicked:', page); // Log to check the clicked page
+                
+                // Send an AJAX request to load the new page content
+                fetch(`load_page.php?page=${page}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(data => {
+                        document.getElementById('content-container').innerHTML = data;
+                        // Optionally update the current pagination state (e.g., highlight active page)
+                        updatePaginationState(page);
+                    })
+                    .catch(error => console.error('Error loading page:', error));
+            }
+        }
+    });
+
+    function updatePaginationState(activePage) {
+        const buttons = paginationContainer.querySelectorAll('.pg-btn');
+        buttons.forEach(button => {
+            if (parseInt(button.getAttribute('data-page'), 10) === activePage) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+});
+</script>
+
 			         	</div>
 					</div>
 				</div>
