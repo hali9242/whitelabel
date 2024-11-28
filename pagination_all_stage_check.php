@@ -122,7 +122,7 @@ if($page == $totalpages){
 	
 	if ($page < $totalpages) {
 		$output .='<li><div class="next-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'" tab="sdff'.$page.'">
-			<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
+			<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
 			<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
 		</div></li>';
 	}
