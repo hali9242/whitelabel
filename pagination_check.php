@@ -497,7 +497,7 @@ $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="pagin
    
 
 
-}
+
 								
 	$return_arr['message'] = $output;
 	echo json_encode($return_arr);

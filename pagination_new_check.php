@@ -690,109 +690,80 @@ $return_arr['query1'] = $query;
 	$return_arr['countnow'] = $checkcountn;*/
 	$totalpages = ceil( $checkcountn / $limit );
 	$output = '';
-	$output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear" totalcheckcount="'.$checkcountn.'" totalpages="'.$totalpages.'">
-	<ul class="pagination">';
-	if(empty($page) or $page == '' or $page == 0 or $page == '0'){
-		$page = 1;
-	}							
-		if ($page < $totalpages) {
-			if($totalpages != 1){
-				$output .='<li>
-				<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
-					<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
-						<span class="btn-prev"></span>
-					</div>
-					<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-						<span class="hidden-xs"></span>
-					</div>
-				</div>
-				</li>';
-			}
-		}							
-		if($page == $totalpages){
-			if($totalpages == 1){
-				$output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$rtypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
-			} else if($totalpages<= 6) {
-				for ($i= 1 ; $i <= $totalpages; $i++) {
-					$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-				}
-			} else if((6 + $page -1)<$totalpages){
-				for ($i= (1 + $page -1) ; $i <= (6 + $page -1) ; $i++) {
-					$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-				}
-			} else{
-				for ($i= ($totalpages-5); $i <=  $totalpages ; $i++)
-				{
-					$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-				}
-			}
+	$output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
+   <ul class="pagination">'
+    
+    if (empty($page) || $page == '' || $page == 0 || $page == '0') {
+        $page = 1;
+    }
 
-			if ($page < $totalpages) {
-				$output .='<li><div class="next-btn" search="'.$searchvalue.'"  sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">
-					</span></div>
-					<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-				</div></li>';
-			}
-			if($totalpages<2) $pgn = 'page'; else $pgn='pages';
-			$output .='</ul>
-				<p>
-					<span>of&nbsp;</span>
-					<span class="ng-binding">'.$totalpages.'</span>
-					<span>&nbsp;'.$pgn.'</span>
-				</p>
-		</nav>';
+    // "Previous" button
+    if ($page > 1 && $totalpages != 1) {
+        $output .= '<li>
+            <div class="prv-btn" sort="' . $sort . '" search="' . $search . '" lifestage="' . $lifestage . '" type="' . $dvaluen . '" pager="' . ($page - 1) . '">
+                <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
+                    <span class="btn-prev"></span>
+                </div>
+                <div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
+                    <span class="hidden-xs"></span>
+                </div>
+            </div>
+        </li>';
+    }
 
-			}else{
-				if($totalpages == 1){
-				$output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$rtypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
-				} else if($totalpages<= 6) {
-					for ($i= 1 ; $i <= $totalpages; $i++) {
-						$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-					}
-				} else if((6 + $page -1)<$totalpages){
-					for ($i= (1 + $page -1) ; $i <= (6 + $page -1) ; $i++) {
-						$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-					}
-				} else{
-					for ($i= ($totalpages-5); $i <=  $totalpages ; $i++) 
-					{
-						$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
-					}
-				}
+    // Ellipses before the current range
+    if ($page > 3) {
+        $output .= '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" sort="' . $sort . '" search="' . $search . '" lifestage="' . $lifestage . '" typevalue="' . $dvaluen . '" pagerv="1">1</li>';
+        if ($page > 4) {
+            $output .= '<li class="pg-btn disabled" style="padding:5px 6px; cursor: default;">...</li>';
+        }
+    }
 
-			if ($page < $totalpages) {
-				$output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
-					<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-				</div></li>';
-			}
-		if ($totalpages > 1) {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-        } else if ($totalpages == 1)  {
-        $output .='</ul>
-            <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding">'.$totalpages.'</span>
-                <span>&nbsp;page</span>
-            </p>
-    </nav>';
-        } else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
-	</nav>';
-		}
-		}
+    // Display current range of pages
+    $startPage = max(1, $page - 2);
+    $endPage = min($totalpages, $page + 2);
+
+    for ($i = $startPage; $i <= $endPage; $i++) {
+        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" sort="' . $sort . '" search="' . $search . '" lifestage="' . $lifestage . '" typevalue="' . $dvaluen . '" pagerv="' . $i . '">' . $i . '</li>';
+    }
+
+    // Ellipses after the current range
+    if ($page < $totalpages - 2) {
+        if ($page < $totalpages - 3) {
+            $output .= '<li class="pg-btn disabled" style="padding:5px 6px; cursor: default;">...</li>';
+        }
+        $output .= '<li class="pg-btn" style="padding:5px 6px; cursor: pointer" sort="' . $sort . '" search="' . $search . '" lifestage="' . $lifestage . '" typevalue="' . $dvaluen . '" pagerv="' . $totalpages . '">' . $totalpages . '</li>';
+    }
+
+    // "Next" button
+    if ($page < $totalpages) {
+        $output .= '<li>
+            <div class="next-btn" sort="' . $sort . '" search="' . $search . '" lifestage="' . $lifestage . '" type="' . $dvaluen . '" pager="' . ($page + 1) . '" tab="sdff' . $page . '">
+                <div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;">
+                    <span class="hidden-xs"></span>
+                </div>
+                <div style="float:left;margin-top: 10px;  cursor: pointer;">
+                    <span class="btn-next"></span>
+                </div>
+            </div>
+        </li>';
+    }
+
+    $output .= '</ul>';
+    if ($totalpages > 1) {
+        $output .= '<p>
+            <span>of&nbsp;</span>
+            <span class="ng-binding">' . $totalpages . '</span>
+            <span>&nbsp;pages</span>
+        </p>';
+    } else {
+        $output .= '<p>
+            <span>of&nbsp;</span>
+            <span class="ng-binding">' . $totalpages . '</span>
+            <span>&nbsp;page</span>
+        </p>';
+    }
+   
 										
 			$return_arr['message'] = $output;
 			echo json_encode($return_arr);
