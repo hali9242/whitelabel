@@ -507,21 +507,25 @@ var sync1 = $.ajax({
             $(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
         }
 
-        // Debugging log to check if the correct pager value is set
-        console.log("Current Pager Value:", pager);
+        // Check the pager value being passed and verify it matches the page button's pagerv attribute
+console.log("Pager value before adding active class:", pager);
 
-        // Remove active class from all buttons
-        $(".pg-btn").removeClass("active");
-        
-        // Debugging log to check if the correct button is being targeted
-        console.log("Adding active class to button with pagerv:", pager);
+// Remove active class from all buttons to reset
+$(".pg-btn").removeClass("active");
 
-        // Add active class to the current page button
-        $(".pg-btn[pagerv='" + pager + "']").addClass("active");
+// Verify that the correct button is being targeted
+console.log("Attempting to add 'active' class to button with pagerv:", pager);
 
-        // Log to verify if the active class was applied
-        console.log("Active class applied to:", $(".pg-btn[pagerv='" + pager + "']").get(0));
-    }
+// Add the active class to the correct button
+$(".pg-btn[pagerv='" + pager + "']").addClass("active");
+
+// Verify that the class was added
+if ($(".pg-btn[pagerv='" + pager + "']").hasClass("active")) {
+    console.log("Active class successfully added to the button with pagerv:", pager);
+} else {
+    console.log("Failed to add active class to the button with pagerv:", pager);
+}
+
 });
 
 var postDatan = JSON.stringify({"dvalue": type, "pager": pager, "lifestage": lifestage, "search": search, "sort": sortid, "tags": alltags});
@@ -2093,6 +2097,7 @@ alert(query);
 	    return vars;
 	  }
 	  $(document).on('click', '.pg-btn', function() {
+		console.log("Pagination button clicked");
 		// Retrieve attributes from the clicked button
 		var pager = $(this).attr("pagerv");
 		 
