@@ -513,25 +513,8 @@ var sync1 = $.ajax({
             $(".pg-btn").removeAttr("typevalue").attr('typevalue', type);
             $(".next-btn").removeAttr("type").attr('type', type).removeAttr("pager").attr('pager', pagern);
         }
-
-        // Check the pager value being passed and verify it matches the page button's pagerv attribute
-console.log("Pager value before adding active class:", pager);
-
-// Remove active class from all buttons to reset
-$(".pg-btn").removeClass("active");
-
-// Verify that the correct button is being targeted
-console.log("Attempting to add 'active' class to button with pagerv:", pager);
-
-// Add the active class to the correct button
-$(".pg-btn[pagerv='" + pager + "']").addClass("active");
-
-// Verify that the class was added
-if ($(".pg-btn[pagerv='" + pager + "']").hasClass("active")) {
-    console.log("Active class successfully added to the button with pagerv:", pager);
-} else {
-    console.log("Failed to add active class to the button with pagerv:", pager);
-}
+		
+	}
 
 });
 
