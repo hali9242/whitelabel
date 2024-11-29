@@ -775,16 +775,21 @@ $return_arr['query1'] = $query;
 			</p>
 	</nav>';
         } else if ($totalpages == 1)  {
-    //     $output .='</ul>
-    //         <p>
-    //             <span>of&nbsp;</span>
-    //             <span class="ng-binding">'.$totalpages.'</span>
-    //             <span>&nbsp;page</span>
-    //         </p>
-    // </nav>';
+        $output .='</ul>
+            <p>
+                <span>of&nbsp;</span>
+                <span class="ng-binding">'.$totalpages.'</span>
+                <span>&nbsp;page</span>
+            </p>
+    </nav>';
         } else {
-		$output .='</ul>'
-	 	
+		$output .='</ul>
+	 	<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;page</span>
+	 		</p>
+	  </nav>';
 		}
 		}
 										
