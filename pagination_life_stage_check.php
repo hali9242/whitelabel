@@ -452,24 +452,20 @@ else{}
                 </div></li>';
             }
 
-        if ($totalpages > 1) {
-        $output .='</ul>
-            <p dv="'.$totalpages.'" sdfdf>
-                <span>of&nbsp;</span>
-                <span class="ng-">'.$totalpages.'</span>
-                <span>&nbsp;pages</span>
-            </p>
-    </nav>';
-        } else {
-        $output .='</ul>
-            <p dv="'.$totalpages.'" sdfsdfdd>
-                <span>of&nbsp;</span>
-                <span class="ng">'.$totalpages.'</span>
-                <span>&nbsp;page</span>
-            </p>
-    </nav>';
-        }
-        }
+            if ($totalpages > 1) {
+                $output .= '</ul>';
+                // Removed the "of 56 pages" section
+                $output .= '</nav>';
+            } else if ($totalpages == 1) {
+                $output .= '</ul>';
+                // Removed the "of 1 page" section
+                $output .= '</nav>';
+            } else {
+                $output .= '</ul>';
+                // Removed the "of 0 page" section
+                $output .= '</nav>';
+            }
+        }            
                                         
             $return_arr['message'] = $output;
             echo json_encode($return_arr);
