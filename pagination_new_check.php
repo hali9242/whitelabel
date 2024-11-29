@@ -766,32 +766,29 @@ $return_arr['query1'] = $query;
 					<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
 				</div></li>';
 			}
-		if ($totalpages > 1) {
-		$output .='</ul>'
+		// if ($totalpages > 1) {
+		$output .='</ul>';
+		
 			// <p>
 			// 	<span>of&nbsp;</span>
 			// 	<span class="ng-binding">'.$totalpages.'</span>
 			// 	<span>&nbsp;pages</span>
 			// </p>
-	'</nav>';
-        } else if ($totalpages == 1)  {
-        $output .='</ul>'
+			$output .='</nav>';
+        
             // <p>
             //     <span>of&nbsp;</span>
             //     <span class="ng-binding">'.$totalpages.'</span>
             //     <span>&nbsp;page</span>
             // </p>
-    '</nav>';
-        } else {
-		$output .='</ul>'
+    
 	 	// <p>
 		// 		<span>of&nbsp;</span>
 		// 		<span class="ng-binding">'.$totalpages.'</span>
 		// 		<span>&nbsp;page</span>
 	 	// 	</p>
-	  '</nav>';
-		}
-		}
+	  
+		//}
 										
 			$return_arr['message'] = $output;
 			echo json_encode($return_arr);
