@@ -784,12 +784,12 @@ $return_arr['query1'] = $query;
     // </nav>';
         } else {
 		$output .='</ul>
-	// 	<p>
-	// 			<span>of&nbsp;</span>
-	// 			<span class="ng-binding">'.$totalpages.'</span>
-	// 			<span>&nbsp;page</span>
-	//  		</p>
-	//  </nav>';
+	 	// <p>
+		// 		<span>of&nbsp;</span>
+		// 		<span class="ng-binding">'.$totalpages.'</span>
+		// 		<span>&nbsp;page</span>
+	 	// 	</p>
+	  </nav>';
 		}
 		}
 										
