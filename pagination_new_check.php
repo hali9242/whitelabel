@@ -768,27 +768,27 @@ $return_arr['query1'] = $query;
 			}
 		if ($totalpages > 1) {
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
+			// <p>
+			// 	<span>of&nbsp;</span>
+			// 	<span class="ng-binding">'.$totalpages.'</span>
+			// 	<span>&nbsp;pages</span>
+			// </p>
 	</nav>';
         } else if ($totalpages == 1)  {
         $output .='</ul>
-            <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding">'.$totalpages.'</span>
-                <span>&nbsp;page</span>
-            </p>
+            // <p>
+            //     <span>of&nbsp;</span>
+            //     <span class="ng-binding">'.$totalpages.'</span>
+            //     <span>&nbsp;page</span>
+            // </p>
     </nav>';
         } else {
 		$output .='</ul>
-	 	<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-	 		</p>
+	 	// <p>
+		// 		<span>of&nbsp;</span>
+		// 		<span class="ng-binding">'.$totalpages.'</span>
+		// 		<span>&nbsp;page</span>
+	 	// 	</p>
 	  </nav>';
 		}
 		}
@@ -796,8 +796,4 @@ $return_arr['query1'] = $query;
 			$return_arr['message'] = $output;
 			echo json_encode($return_arr);
 		?>
-		<style>
-			.ng-binding{
-				display: none;
-			}
-		</style>
+		
