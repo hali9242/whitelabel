@@ -781,7 +781,7 @@ $return_arr['query1'] = $query;
 			}
 			
 		}
-		}
+		
 										
 			$return_arr['message'] = $output;
 			echo json_encode($return_arr);
