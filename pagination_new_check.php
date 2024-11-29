@@ -695,7 +695,7 @@ $return_arr['query1'] = $query;
 	if(empty($page) or $page == '' or $page == 0 or $page == '0'){
 		$page = 1;
 	}							
-		if ($page > 1) {
+		if ($page < $totalpages) {
 			if($totalpages != 1){
 				$output .='<li>
 				<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
@@ -703,7 +703,7 @@ $return_arr['query1'] = $query;
 						<span class="btn-prev"></span>
 					</div>
 					<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-						<span class="hidden-xs">Prev</span>
+						<span class="hidden-xs"></span>
 					</div>
 				</div>
 				</li>';
@@ -729,7 +729,7 @@ $return_arr['query1'] = $query;
 
 			if ($page < $totalpages) {
 				$output .='<li><div class="next-btn" search="'.$searchvalue.'"  sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
+					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
 					<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
 				</div></li>';
 			}
@@ -762,7 +762,7 @@ $return_arr['query1'] = $query;
 
 			if ($page < $totalpages) {
 				$output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
+					<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
 					<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
 				</div></li>';
 			}
@@ -775,21 +775,21 @@ $return_arr['query1'] = $query;
 			</p>
 	</nav>';
         } else if ($totalpages == 1)  {
-        $output .='</ul>
-            <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding">'.$totalpages.'</span>
-                <span>&nbsp;page</span>
-            </p>
-    </nav>';
+    //     $output .='</ul>
+    //         <p>
+    //             <span>of&nbsp;</span>
+    //             <span class="ng-binding">'.$totalpages.'</span>
+    //             <span>&nbsp;page</span>
+    //         </p>
+    // </nav>';
         } else {
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
-	</nav>';
+	// 	<p>
+	// 			<span>of&nbsp;</span>
+	// 			<span class="ng-binding">'.$totalpages.'</span>
+	// 			<span>&nbsp;page</span>
+	//  		</p>
+	//  </nav>';
 		}
 		}
 										
