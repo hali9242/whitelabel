@@ -1315,7 +1315,7 @@ $lastTag = current(array_slice($tagResult, -1));
             }
 
             // "Previous" button
-            if ($pagernew > 1) { ?>
+            if ($pagernew < $num_of_pages) { ?>
                 <li>
                     <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
                         <div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
