@@ -1474,3 +1474,40 @@ console.log(array, array.reverse());
 	echo $url2;*/
 }
 ?>
+<style>
+	.pagination {
+    list-style: none !important;
+    display: flex !important;
+    gap: 10px !important; /* Adds spacing between numbers and ellipsis */
+    align-items: center !important;
+    padding: 0 !important;
+}
+
+.pagination li {
+    display: inline-block !important;
+}
+
+li.pg-btn {
+    text-decoration: none !important;
+    padding: 10px 20px !important; /* Add padding for a better click area */
+    border-radius: 5px !important; /* Rounded corners */
+    color: #000  ; /* Default text color */
+    
+}
+li.pg-btn.disabled:hover {
+    background-color: transparent !important;
+	color:#000;
+}
+
+li.pg-btn:hover {
+    background-color: #6BD9DE !important ; /* Hover background color */
+    color: #fff !important; /* Change text color on hover */
+	
+}
+
+li.pg-btn.active {
+    background-color: #6BD9DE !important; /* Active page background color */
+    color: #fff !important; /* Active page text color */
+}
+
+</style>
