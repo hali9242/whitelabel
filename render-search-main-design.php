@@ -1481,6 +1481,7 @@ console.log(array, array.reverse());
     gap: 10px !important; /* Adds spacing between numbers and ellipsis */
     align-items: center !important;
     padding: 0 !important;
+	justify-content: center;
 }
 
 .pagination li {
