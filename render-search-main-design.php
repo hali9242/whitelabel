@@ -1353,7 +1353,7 @@ $lastTag = current(array_slice($tagResult, -1));
                 if ($endPage < $num_of_pages - 1) { ?>
                     <li class="pg-btn disabled" style="cursor: default;">...</li>
                 <?php } ?>
-                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
+                <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
             <?php } 
 
             // "Next" button
