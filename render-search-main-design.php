@@ -1337,7 +1337,7 @@ $lastTag = current(array_slice($tagResult, -1));
 
             // Display the first page and ellipsis if needed
             if ($startPage > 1) { ?>
-                <li class="pg-btn" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
+                <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
                 <?php if ($startPage > 2) { ?>
                     <li class="pg-btn disabled" style="cursor: default;">...</li>
                 <?php }
@@ -1345,7 +1345,7 @@ $lastTag = current(array_slice($tagResult, -1));
 
             // Display the page numbers in range
             for ($i = $startPage; $i <= $endPage; $i++) { ?>
-                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" style="padding:5px 6px; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
+                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
             <?php }
 
             // Display ellipsis and the last page if needed
@@ -1494,9 +1494,7 @@ li.pg-btn {
     color: #000  ; /* Default text color */
     
 }
-li.pg-btn a{
-	font-size: 16px !important;
-}
+
 li.pg-btn.disabled:hover {
     background-color: transparent !important;
 	color:#000;
