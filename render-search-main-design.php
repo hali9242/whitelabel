@@ -1321,7 +1321,7 @@ $lastTag = current(array_slice($tagResult, -1));
 					<div style="float: left;  margin-top: 8px; cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
-    <div style="float: left; margin-top: 8px; cursor: pointer; margin-right: 22px;">
+    <div style="float: left; margin-top: 8px; cursor: pointer; ">
         <span class="hidden-xs"></span>
     </div>
                     </div>
