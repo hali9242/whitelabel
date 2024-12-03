@@ -1318,12 +1318,21 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew > 1) { ?>
                 <li>
                     <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
+<<<<<<< HEAD
                         <div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
                             <span class="btn-prev"></span>
                         </div>
                         <div style="float:left;margin-top: 7px; cursor: pointer; margin-right: 22px;">
                             <span class="hidden-xs"></span>
                         </div>
+=======
+					<div style="float: left; margin-right: 10px; margin-left: 10px; margin-top: 8px; cursor: pointer; display: flex; align-items: center;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left; margin-top: 8px; cursor: pointer; margin-right: 22px; display: flex; align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+>>>>>>> ab33d9a88edc9641dcc798a2457ebec2988ac536
                     </div>
                 </li>
             <?php } ?>
@@ -1360,12 +1369,21 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew < $num_of_pages) { ?>
                 <li>
                     <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
+<<<<<<< HEAD
                         <div style="float:left;margin-right: 5px;margin-left: 10px; cursor: pointer;">
                             <span class="hidden-xs"></span>
                         </div>
                         <div style="float:left;margin-top: 7px; cursor: pointer;">
                             <span class="btn-next"></span>
                         </div>
+=======
+					<div style="float: left; margin-right: 10px; margin-left: 22px; margin-top: 8px; cursor: pointer; display: flex; align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+    <div style="float: left; margin-top: 8px; cursor: pointer; display: flex; align-items: center;">
+        <span class="btn-next"></span>
+    </div>
+>>>>>>> ab33d9a88edc9641dcc798a2457ebec2988ac536
                     </div>
                 </li>
             <?php } ?>
