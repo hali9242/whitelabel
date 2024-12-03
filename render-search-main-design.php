@@ -1363,7 +1363,7 @@ $lastTag = current(array_slice($tagResult, -1));
 					<div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
-    <div style="float: left;  cursor: pointer;  align-items: center;">
+    <div style="float: left;  cursor: pointer; margin-top:3px;  align-items: center;">
         <span class="btn-next"></span>
     </div>
                     </div>
@@ -1493,6 +1493,9 @@ li.pg-btn {
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
     
+}
+li.pg-btn a{
+	font-size: 16px !important;
 }
 li.pg-btn.disabled:hover {
     background-color: transparent !important;
