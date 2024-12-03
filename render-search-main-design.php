@@ -1339,7 +1339,7 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($startPage > 1) { ?>
                 <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
                 <?php if ($startPage > 2) { ?>
-                    <li class="pg-btn disabled" style="cursor: default;">...</li>
+                    <li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>
                 <?php }
             }
 
@@ -1351,7 +1351,7 @@ $lastTag = current(array_slice($tagResult, -1));
             // Display ellipsis and the last page if needed
             if ($endPage < $num_of_pages) {
                 if ($endPage < $num_of_pages - 1) { ?>
-                    <li class="pg-btn disabled" style="cursor: default;">...</li>
+                    <li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>
                 <?php } ?>
                 <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
             <?php } 
