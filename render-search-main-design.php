@@ -1495,10 +1495,7 @@ li.pg-btn {
     
 }
 
-li.pg-btn.disabled:hover {
-    background-color: transparent !important;
-	color:#000;
-}
+
 
 li.pg-btn:hover {
     background-color: #6BD9DE !important ; /* Hover background color */
