@@ -700,10 +700,12 @@ if (empty($page) || $page == '' || $page == 0 || $page == '0') {
 // Display "previous" button if not on the first page
 if ($page > 1) {
     $output .= '<li>
-        <div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'" search="'.$searchvalue.'" sort="'.$sort.'">
-            <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
-                <span class="btn-prev"></span>
-            </div>
+        <div style="float: left;   cursor: pointer;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; ">
+        <span class="hidden-xs"></span>
+    </div>  
         </div>
     </li>';
 }
@@ -713,7 +715,7 @@ $maxPagesToShow = 5; // Total number of pages to show at once, including ellipsi
 
 if ($totalpages > $maxPagesToShow) {
     // Display the first page
-    $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
+    $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
 
     if ($page > 4) {
         $output .= '<li class="pg-btn disabled" style="cursor: default;">...</li>';
@@ -723,7 +725,7 @@ if ($totalpages > $maxPagesToShow) {
     $start = max(2, $page - 2);
     $end = min($totalpages - 1, $page + 2);
     for ($i = $start; $i <= $end; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
 
     if ($page < $totalpages - 3) {
@@ -731,11 +733,11 @@ if ($totalpages > $maxPagesToShow) {
     }
 
     // Display the last page
-    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
+    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
 } else {
     // Display all pages if the total number is less than or equal to the max to show
     for ($i = 1; $i <= $totalpages; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
 }
 
@@ -743,12 +745,12 @@ if ($totalpages > $maxPagesToShow) {
 if ($page < $totalpages) {
     $output .= '<li>
         <div class="next-btn" search="'.$searchvalue.'" sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page + 1).'">
-            <div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;">
-                <span class="hidden-xs"></span>
-            </div>
-            <div style="float:left;margin-top: 10px; cursor: pointer;">
-                <span class="btn-next"></span>
-            </div>
+            <div style="float: left;   cursor: pointer;  align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; margin-top:3px;  align-items: center;">
+        <span class="btn-next"></span>
+    </div>
         </div>
     </li>';
 }
