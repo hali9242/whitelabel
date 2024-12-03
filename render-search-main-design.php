@@ -1477,8 +1477,7 @@ console.log(array, array.reverse());
 <style>
 	.pagination {
     list-style: none !important;
-    display: flex !important;
-    gap: 2px !important; /* Adds spacing between numbers and ellipsis */
+    
     align-items: center !important;
     padding: 0 !important;
 	justify-content: center;
