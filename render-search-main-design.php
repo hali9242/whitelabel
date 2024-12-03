@@ -1494,8 +1494,11 @@ li.pg-btn {
     color: #000  ; /* Default text color */
     
 }
-
-
+li.pg-btn.disabled:hover {
+     background-color: transparent !important; 
+    
+    color: #6BD9DE !important;
+}
 
 li.pg-btn:hover {
     background-color: #6BD9DE !important ; /* Hover background color */
