@@ -1318,10 +1318,10 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew > 1) { ?>
                 <li>
                     <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
-					<div style="float: left;  margin-top: 8px; cursor: pointer;">
+					<div style="float: left;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
-    <div style="float: left; margin-top: 8px; cursor: pointer; ">
+    <div style="float: left;  cursor: pointer; ">
         <span class="hidden-xs"></span>
     </div>
                     </div>
@@ -1360,10 +1360,10 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew < $num_of_pages) { ?>
                 <li>
                     <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
-					<div style="float: left;  margin-top: 8px; cursor: pointer; display: flex; align-items: center;">
+					<div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
-    <div style="float: left; margin-top: 8px; cursor: pointer;  align-items: center;">
+    <div style="float: left;  cursor: pointer;  align-items: center;">
         <span class="btn-next"></span>
     </div>
                     </div>
