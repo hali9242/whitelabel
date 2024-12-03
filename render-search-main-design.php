@@ -1478,7 +1478,7 @@ console.log(array, array.reverse());
 	.pagination {
     list-style: none !important;
     display: flex !important;
-    gap: 10px !important; /* Adds spacing between numbers and ellipsis */
+    gap: 2px !important; /* Adds spacing between numbers and ellipsis */
     align-items: center !important;
     padding: 0 !important;
 	justify-content: center;
@@ -1490,7 +1490,7 @@ console.log(array, array.reverse());
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 10px 20px !important; /* Add padding for a better click area */
+    padding: 5px 10px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
     
