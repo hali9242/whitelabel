@@ -1363,7 +1363,7 @@ $lastTag = current(array_slice($tagResult, -1));
 					<div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
-    <div style="float: left;  cursor: pointer; margin-top:3px;  align-items: center;">
+    <div style="float: left;  cursor: pointer; margin-top:2px;  align-items: center;">
         <span class="btn-next"></span>
     </div>
                     </div>
