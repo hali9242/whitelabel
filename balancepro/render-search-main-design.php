@@ -1374,12 +1374,12 @@ li.pg-btn {
     
 }
 .prv-btn {
-    margin-top: 4px;
-    margin-right: 4px;
+    margin-top: 4px !important;
+    margin-right: 4px !important;
 }
 .next-btn {
-    margin-top: 4px;
-    margin-left: 4px;
+    margin-top: 4px !important;
+    margin-left: 4px !important;
 }
 li.pg-btn.disabled:hover {
      background-color: transparent !important; 
