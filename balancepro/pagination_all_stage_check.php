@@ -96,81 +96,74 @@ $checkn->execute();
 $checkcountn = $checkn->rowCount();
 $totalpages = ceil( $checkcountn / $limit );
 $output = '';
-$output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
+$output .= '<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear" totalcheckcount="'.$checkcountn.'" totalpages="'.$totalpages.'">
     <ul class="pagination">';
-								
-if ($page > 1) {
-	if($totalpages != 1){
-	$output .='<li>
-		<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'">
-			<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
-				<span class="btn-prev"></span>
-			</div>
-			<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-				<span class="hidden-xs">Prev</span>
-			</div>
-		</div>
-	</li>';
-	}
-}
-								
-if($page == $totalpages){
-	
-		for ($i= max(1, $page ); $i <= min($page + 5, $totalpages); $i++) {
-			$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'">'.$i.'</li>';
-		}
-	
-	if ($page < $totalpages) {
-		$output .='<li><div class="next-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'" tab="sdff'.$page.'">
-			<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
-			<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-		</div></li>';
-	}
-		if ($totalpages > 1) {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
-	</nav>';
-		}
-}else{
-	for ($i= max(1, $page ); $i <= min($page + 5, $totalpages); $i++) {
-		$output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'">'.$i.'</li>';
-	}
 
-if ($page < $totalpages) {
-	$output .='<li><div class="next-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'" tab="sdff'.$page.'">
-		<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
-		<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-	</div></li>';
+if (empty($page) || $page == '' || $page == 0 || $page == '0') {
+    $page = 1;
 }
-		if ($totalpages > 1) {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
-	</nav>';
-		}
+
+// Display "previous" button if not on the first page
+if ($page > 1) {
+    $output .= '<li>
+	<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
+        <div style="float: left;   cursor: pointer;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; ">
+        <span class="hidden-xs"></span>
+    </div>  
+        </div>
+    </li>';
+}
+
+// Display page numbers with ellipsis logic
+$maxPagesToShow = 5; // Total number of pages to show at once, including ellipsis
+
+if ($totalpages > $maxPagesToShow) {
+    // Display the first page
+    $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
+
+    if ($page > 4) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
+    }
+
+    // Display the range of pages around the current page
+    $start = max(2, $page - 2);
+    $end = min($totalpages - 1, $page + 2);
+    for ($i = $start; $i <= $end; $i++) {
+        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+    }
+
+    if ($page < $totalpages - 3) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
+    }
+
+    // Display the last page
+    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
+} else {
+    // Display all pages if the total number is less than or equal to the max to show
+    for ($i = 1; $i <= $totalpages; $i++) {
+        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+    }
+}
+
+// Display "next" button if not on the last page
+if ($page < $totalpages) {
+    $output .= '<li>
+        <div class="next-btn" search="'.$searchvalue.'" sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page + 1).'">
+            <div style="float: left;   cursor: pointer;  align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; align-items: center;">
+        <span class="btn-next"></span>
+    </div>
+        </div>
+    </li>';
+}
+
+$output .= '</ul>';
+$output .= '</nav>';
 }
 								
 	$return_arr['message'] = $output;
