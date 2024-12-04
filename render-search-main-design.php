@@ -1318,7 +1318,7 @@ $lastTag = current(array_slice($tagResult, -1));
             if ($pagernew > 1) { ?>
                 <li>
                     <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
-					<div style="float: left;   cursor: pointer;">
+					<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
     <div style="float: left;  cursor: pointer; ">
@@ -1363,7 +1363,7 @@ $lastTag = current(array_slice($tagResult, -1));
 					<div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
-    <div style="float: left;  cursor: pointer;   align-items: center;">
+    <div style="float: left;  cursor: pointer;   align-items: center; margin-top:4px; margin-left:4px;">
         <span class="btn-next"></span>
     </div>
                     </div>
