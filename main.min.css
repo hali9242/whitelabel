@@ -18808,7 +18808,7 @@ ol.questions {
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 14px 18px 14px 0;
+    border-width: 7px 9px 7px 0;
     border-color: transparent #363636 transparent transparent;
     display: block
 }
@@ -18822,7 +18822,7 @@ ol.questions {
 }
 
 .paging-holder .pagination .btn-next:before {
-    border-width: 14px 0 14px 18px;
+    border-width: 7px 0 7px 9px;
     border-color: transparent transparent transparent #363636
 }
 
