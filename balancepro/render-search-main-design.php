@@ -1370,7 +1370,16 @@ li.pg-btn {
     padding: 0px 10px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
+	margin-left:5px !important;
     
+}
+.prv-btn {
+    margin-top: 4px;
+    margin-right: 4px;
+}
+.next-btn {
+    margin-top: 4px;
+    margin-left: 4px;
 }
 li.pg-btn.disabled:hover {
      background-color: transparent !important; 
