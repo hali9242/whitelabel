@@ -8545,8 +8545,7 @@ a.pg-btn.next-btn:hover{
 }
 .pagination {
     list-style: none !important;
-    display: flex !important;
-    gap: 10px !important; /* Adds spacing between numbers and ellipsis */
+    
     align-items: center !important;
     padding: 0 !important;
 }
@@ -8560,6 +8559,7 @@ li.pg-btn {
     padding: 10px 20px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
+    
     
 }
 li.pg-btn.disabled:hover {
