@@ -701,7 +701,7 @@ if (empty($page) || $page == '' || $page == 0 || $page == '0') {
 if ($page > 1) {
     $output .= '<li>
 	<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
-        <div style="float: left;   cursor: pointer;">
+        <div style="float: left; margin-top:4px; margin-right:4px;  cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
     <div style="float: left;  cursor: pointer; ">
@@ -749,7 +749,7 @@ if ($page < $totalpages) {
             <div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
-    <div style="float: left;  cursor: pointer; align-items: center;">
+    <div style="float: left;  cursor: pointer; align-items: center; margin-top:4px; margin-left:4px;">
         <span class="btn-next"></span>
     </div>
         </div>
