@@ -1198,7 +1198,7 @@ if($extractedlifestage){
                                     $output .='<li test="sdfds ---this is type'.$type.'">
                                  	  	<div class="prv-btn" lifestage="0" type="'.$ttvalue.'" pager="'.($pagernew-1).'" search="0">
                                  		   <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
-												<span class="btn-prev"></span>
+												<span class="btn-previous"></span>
 											</div>
 							              	<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
 							              		<span class="hidden-xs">Prev</span>
