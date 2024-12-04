@@ -1208,8 +1208,8 @@ if ($type == '') {
 // "Previous" button
 if ($pagernew > 1) {
     $output .= '<li>';
-    $output .= '<div class="prv-btn" style="margin-top: 4px; margin-right: 4px;" lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew - 1) . '" search="0">';
-    $output .= '<div style="float: left; cursor: pointer;"><span class="btn-prev"></span></div>';
+    $output .= '<div class="prv-btn"  lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew - 1) . '" search="0">';
+    $output .= '<div style="float: left; cursor: pointer; margin-top: 4px; margin-right: 4px;"><span class="btn-prev"></span></div>';
     $output .= '<div style="float: left; cursor: pointer;"><span class="hidden-xs"></span></div>';
     $output .= '</div>';
     $output .= '</li>';
@@ -1245,9 +1245,9 @@ if ($endPage < $num_of_pages) {
 // "Next" button
 if ($pagernew < $num_of_pages) {
     $output .= '<li>';
-    $output .= '<div class="next-btn" style="margin-top: 4px; margin-left: 4px;" lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew + 1) . '" search="0">';
+    $output .= '<div class="next-btn"  lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew + 1) . '" search="0">';
     $output .= '<div style="float: left; cursor: pointer; align-items: center; "><span class="hidden-xs"></span></div>';
-    $output .= '<div style="float: left; cursor: pointer; align-items: center;"><span class="btn-next"></span></div>';
+    $output .= '<div style="float: left; cursor: pointer; align-items: center; margin-top: 4px; margin-left: 4px;"><span class="btn-next"></span></div>';
     $output .= '</div>';
     $output .= '</li>';
 }
