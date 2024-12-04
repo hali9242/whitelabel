@@ -1189,7 +1189,7 @@ if($extractedlifestage){
 							              $output .= '      </div>';
 				         			$output .='<!-- main content ends -->';
 				         		$output .='</div>';
-				         		<?php
+				         		
 $output .= '<!-- Pagination box starts -->';
 $output .= '<div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden"></div>';
 $output .= '<div style="padding:10px 5px; clear: both;" id="pagination-box" type="' . $type . '" dvalue="' . $dvaluen . '" pagination-box="render-search-main-design" pager="' . $pagernew . '" numpages="' . $num_of_pages . '">';
