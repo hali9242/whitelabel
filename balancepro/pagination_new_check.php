@@ -709,7 +709,7 @@ if (empty($page) || $page == '' || $page == 0 || $page == '0') {
 // Display "previous" button if not on the first page
 if ($page > 1) {
     $output .= '<li>
-	<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
+	<div class="prv-btn" style="margin-top: 4px; margin-right: 4px;" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
         <div style="float: left;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
@@ -754,7 +754,7 @@ if ($totalpages > $maxPagesToShow) {
 // Display "next" button if not on the last page
 if ($page < $totalpages) {
     $output .= '<li>
-        <div class="next-btn" search="'.$searchvalue.'" sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page + 1).'">
+        <div class="next-btn" style="margin-top: 4px; margin-left: 4px;" search="'.$searchvalue.'" sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page + 1).'">
             <div style="float: left;   cursor: pointer;  align-items: center;">
         <span class="hidden-xs"></span>
     </div>
