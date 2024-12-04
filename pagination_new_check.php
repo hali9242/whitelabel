@@ -700,6 +700,7 @@ if (empty($page) || $page == '' || $page == 0 || $page == '0') {
 // Display "previous" button if not on the first page
 if ($page > 1) {
     $output .= '<li>
+	<div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
         <div style="float: left;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
