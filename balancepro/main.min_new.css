@@ -8846,13 +8846,7 @@ tbody.collapse.in {
     color:#fff;
     background: #6BD9DE;
 }
-.navbar-default .navbar-nav li a:active
- {
-   /* color: #333;
-    background-color: #eee*/
-    color: #000!important;;
-    background: #6BD9DE !important;
-}
+
 
 .navbar-default .navbar-nav>.active>a,
 .navbar-default .navbar-nav>.active>a:focus,
