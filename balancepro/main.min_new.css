@@ -15385,6 +15385,7 @@ h2 {
     margin: 0;
     letter-spacing: 1px;
     background: #fff
+    margin-top: 15px;
 }
 
 .navbar-nav li {
@@ -15453,7 +15454,7 @@ h2 {
         line-height: 23px;
         font-weight: 700;
         padding: 15px 15px;
-        margin-top: 15px;
+        
     }
 }
 
@@ -15529,14 +15530,13 @@ h2 {
 }
 
 .navbar-nav .custom-dropdown-menu li a {
-    background: #eee;
-    font: 400 18px/23px Gotham, Arial, sans-serif;
+    font: 400 18px / 23px dinot, Arial, sans-serif;
     text-transform: capitalize;
     display: block;
     position: relative;
     color: #323232;
-   /* padding: 13px 8px*/
-    padding: 8px 8px
+    padding: 8px 8px;
+    font-weight: 600;
 }
 
 .block h1,
