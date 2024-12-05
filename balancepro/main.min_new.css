@@ -15384,7 +15384,7 @@ h2 {
     max-width: 800px;
     margin: 0;
     letter-spacing: 1px;
-    background: #fff
+    background: #fff;
     margin-top: 15px;
 }
 
@@ -15428,6 +15428,10 @@ h2 {
     font-weight: 600;
     padding: 17px 44px 17px 12px;
     text-transform: capitalize
+}
+.navbar-nav li a:active{
+    color: #fff;
+    background: #6BD9DE;
 }
 
 .navbar-nav li a.dropdown-toggle {
