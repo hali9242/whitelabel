@@ -1367,7 +1367,7 @@ console.log(array, array.reverse());
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 0px 10px !important; /* Add padding for a better click area */
+    padding: 0px 5px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
 	margin-left:5px !important;
