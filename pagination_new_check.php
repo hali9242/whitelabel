@@ -723,8 +723,8 @@ if ($totalpages > $maxPagesToShow) {
     }
 
     // Display the range of pages around the current page
-    $start = max(2, $page - 2);
-    $end = min($totalpages - 1, $page + 2);
+    $start = max(1, $page - 2);
+    $end = min($totalpages - 1, $page + 1);
     for ($i = $start; $i <= $end; $i++) {
         $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
