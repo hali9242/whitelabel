@@ -1328,33 +1328,36 @@ $lastTag = current(array_slice($tagResult, -1));
                 </li>
             <?php } ?>
 
-            <?php 
-            // Handle dynamic pagination with ellipsis
-            if ($pagernew == '') $pagernew = 1;
-            $maxVisible = 5; // Maximum number of pages visible around the current page
-            $startPage = max(1, $pagernew - 2);
-            $endPage = min($num_of_pages, $pagernew + 2);
+			<?php 
+    // Handle dynamic pagination with ellipsis
+    if ($pagernew == '') $pagernew = 1;
+    $maxVisible = 3; // Number of pages visible around the current page
+    $startPage = max(2, $pagernew - 1); // Start from the second page
+    $endPage = min($num_of_pages - 1, $pagernew + 1); // End before the last page
 
-            // Display the first page and ellipsis if needed
-            if ($startPage > 1) { ?>
-                <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="1" search="0">1</li>
-                <?php if ($startPage > 2) { ?>
-                    <li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>
-                <?php }
-            }
+    // Display the first page
+    echo '<li class="pg-btn" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
 
-            // Display the page numbers in range
-            for ($i = $startPage; $i <= $endPage; $i++) { ?>
-                <li class="pg-btn <?php echo ($pagernew == $i ? 'active' : ''); ?>" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $i; ?>" search="0"><?php echo $i; ?></li>
-            <?php }
+    // Display ellipsis after the first page if needed
+    if ($startPage > 2) {
+        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
+    }
 
-            // Display ellipsis and the last page if needed
-            if ($endPage < $num_of_pages) {
-                if ($endPage < $num_of_pages - 1) { ?>
-                    <li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>
-                <?php } ?>
-                <li class="pg-btn" style="padding:5px 6px; font-size: 16px ; cursor: pointer" lifestage="0" typevalue="<?php echo $dvaluen; ?>" pagerv="<?php echo $num_of_pages; ?>" search="0"><?php echo $num_of_pages; ?></li>
-            <?php } 
+    // Display the range of pages around the current page
+    for ($i = $startPage; $i <= $endPage; $i++) {
+        echo '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+    }
+
+    // Display ellipsis before the last page if needed
+    if ($endPage < $num_of_pages - 1) {
+        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
+    }
+
+    // Display the last page
+    if ($num_of_pages > 1) {
+        echo '<li class="pg-btn" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
+    }
+
 
             // "Next" button
             if ($pagernew < $num_of_pages) { ?>
