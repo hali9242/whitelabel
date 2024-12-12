@@ -15091,7 +15091,7 @@ h2 {
     min-width: 320px
 }
 
-#header.fixed-position .header-t,
+/* #header.fixed-position .header-t,
 #header1.fixed-position .header-t {
     margin: -50px 0 0
 }
@@ -15099,7 +15099,7 @@ h2 {
 #header.fixed-position .navbar,
 #header1.fixed-position .navbar {
     box-shadow: 0 5px 19px #bbb
-}
+} */
 
 @media (max-width:767px) and (orientation:landscape) {
 
