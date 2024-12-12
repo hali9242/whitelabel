@@ -391,25 +391,25 @@ if ($page > 1) {
 }
 
 // Display page numbers with ellipsis logic
-$maxPagesToShow = 2; // Total number of pages to show at once, including ellipsis
+$maxPagesToShow = 5; // Total number of pages to show at once, including ellipsis
 
 if ($totalpages > $maxPagesToShow) {
     // Display the first page
     $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
 
-    if ($page > 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
+    if ($page > 4) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
     }
 
     // Display the range of pages around the current page
-    $start = max(2, $page - 1);
+    $start = max(2, $page - 2);
     $end = min($totalpages - 1, $page + 2);
     for ($i = $start; $i <= $end; $i++) {
         $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
 
-    if ($page < $totalpages - 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
+    if ($page < $totalpages - 3) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
     }
 
     // Display the last page
