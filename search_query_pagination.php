@@ -440,3 +440,19 @@ $return_arr['message'] = $output;
 echo json_encode($return_arr);
 ?>
 
+<style>
+
+.paging-holder .pagination li.active{
+	background-color: #6BD9DE !important;
+    color: #fff !important;
+}
+.paging-holder .pagination li:hover{
+	background-color: #6BD9DE !important;
+    color: #fff !important;
+}
+.paging-holder .pagination li{
+	text-decoration: none !important;
+    padding: 0px 5px !important;
+    border-radius: 5px !important;
+}
+</style>
