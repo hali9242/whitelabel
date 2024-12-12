@@ -1237,7 +1237,7 @@ for ($i = $startPage; $i <= $endPage; $i++) {
 // Display ellipsis and the last page if needed
 if ($endPage < $num_of_pages) {
     if ($endPage < $num_of_pages - 1) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE;">...</li>';
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE;  font-size:22px; position:relative; bottom :5px;">..</li>';
     }
     $output .= '<li class="pg-btn" style="padding:5px 6px; font-size: 16px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
 }
