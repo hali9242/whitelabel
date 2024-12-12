@@ -364,7 +364,7 @@ $output = '';
 
 		if ($totalpages == 1) {
 			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="'.$totalpages.'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1" sort="'.$sort.'">1</li>';
-		} else if ($totalpages <= 3) {
+		} else if ($totalpages <= 6) {
 			// If total pages are 6 or fewer, display all page numbers
 			for ($i = 1; $i <= $totalpages; $i++) {
 				$output .= '<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'" sort="'.$sort.'">'.$i.'</li>';
@@ -427,12 +427,12 @@ $output = '';
 
 	if ($totalpages == 1) {
 		$output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="'.$totalpages.'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1" sort="'.$sort.'">1</li>';
-	} else if ($totalpages <= 3) {
+	} else if ($totalpages <= 6) {
 		// If total pages are 6 or fewer, display all page numbers
 		for ($i = 1; $i <= $totalpages; $i++) {
 			$output .= '<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'" sort="'.$sort.'">'.$i.'</li>';
 		}
-	} else if (($pvalue - 1) <= 3) {
+	} else if (($pvalue - 1) <= 6) {
 		// If the current page is near the beginning, display the first 6 pages and ellipses for the rest
 		for ($i = 1; $i <= 6; $i++) {
 			$output .= '<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'" sort="'.$sort.'">'.$i.'</li>';
