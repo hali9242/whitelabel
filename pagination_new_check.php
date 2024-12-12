@@ -716,29 +716,29 @@ $maxPagesToShow = 2; // Total number of pages to show at once, including ellipsi
 
 if ($totalpages > $maxPagesToShow) {
     // Display the first page
-    $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
+    $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background-color: ' . ($page == 1 ? '#6BD9DE' : 'transparent') . '; color: ' . ($page == 1 ? '#fff' : '#000') . ';">1</li>';
 
-    if ($page > 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">..</li>';
+    if ($page > 3) {
+        $output .= '<li class="pg-btn disabled" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 20px; color: #6BD9DE; cursor: default;">...</li>';
     }
 
     // Display the range of pages around the current page
     $start = max(2, $page - 1);
     $end = min($totalpages - 1, $page + 1);
     for ($i = $start; $i <= $end; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background-color: ' . ($page == $i ? '#6BD9DE' : 'transparent') . '; color: ' . ($page == $i ? '#fff' : '#000') . ';">' . $i . '</li>';
     }
 
     if ($page < $totalpages - 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">..</li>';
+        $output .= '<li class="pg-btn disabled" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 20px; color: #6BD9DE; cursor: default;">...</li>';
     }
 
     // Display the last page
-    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
+    $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background-color: ' . ($page == $totalpages ? '#6BD9DE' : 'transparent') . '; color: ' . ($page == $totalpages ? '#fff' : '#000') . ';">' . $totalpages . '</li>';
 } else {
     // Display all pages if the total number is less than or equal to the max to show
     for ($i = 1; $i <= $totalpages; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="display: inline-block; text-align: center; width: 40px; height: 40px; line-height: 40px; margin: 0 5px; font-size: 16px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; background-color: ' . ($page == $i ? '#6BD9DE' : 'transparent') . '; color: ' . ($page == $i ? '#fff' : '#000') . ';">' . $i . '</li>';
     }
 }
 
