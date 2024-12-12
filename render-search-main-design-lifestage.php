@@ -1181,12 +1181,11 @@ if($extractedlifestage){
 				         			$output .='<!-- main content ends -->';
 				         		$output .='</div>';
 				         		$output .='<!-- pagination box starts -->';
-				         		$output .= '<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear" totalcheckcount="'.$checkcountn.'" totalpages="'.$totalpages.'">
-    <ul class="pagination">';
-
-if (empty($page) || $page == '' || $page == 0 || $page == '0') {
-    $page = 1;
-}
+				         		$output .='<div style="padding:10px 5px; clear: both;" id="pagination-box-n" class="hidden">';
+				         		$output .='</div>';
+				         		$output .='<div style="padding:10px 5px; clear: both;" id="pagination-box" type="'.$type.'" dvalue="'.$dvaluen.'" pagination-box="render-search-main-design" type="'.$ttvalue.'" pager="'.$pagernew.'" numpages="'.$num_of_pages.'">';
+				         		$output .= '<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
+            								<ul class="pagination">';
 
 // Display "previous" button if not on the first page
 if ($page > 1) {
@@ -1220,19 +1219,19 @@ if ($totalpages > $maxPagesToShow) {
         $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
 
-    if ($page < $totalpages - 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
-    }
+if ($page < $totalpages - 2) {
+	$output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
+}
 
-    // Display the last page
-    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
+ // Display the last page
+ $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
 } else {
     // Display all pages if the total number is less than or equal to the max to show
     for ($i = 1; $i <= $totalpages; $i++) {
         $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
     }
 }
-
+// Next button
 // Display "next" button if not on the last page
 if ($page < $totalpages) {
     $output .= '<li>
@@ -1248,7 +1247,24 @@ if ($page < $totalpages) {
 }
 
 $output .= '</ul>';
-$output .= '</nav>';
+
+if ($num_of_pages > 1) {
+    $output .= '<p>
+                    <span>of&nbsp;</span>
+                    <span class="ng-binding">' . $num_of_pages . '</span>
+                    <span>&nbsp;pages</span>
+                </p>
+              </nav>';
+} else {
+    $output .= '<p>
+                    <span>of&nbsp;</span>
+                    <span class="ng-binding">' . $num_of_pages . '</span>
+                    <span>&nbsp;page</span>
+                </p>
+              </nav>';
+}
+
+$output .= '</div>';
 
 		return stripslashes( $output );
 	} 
