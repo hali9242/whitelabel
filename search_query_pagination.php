@@ -347,7 +347,7 @@ if ($pvalue > 1) {
 $output .='<li>
 <div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
 	<span class="btn-prev"></span>
-	   <span class="hidden-xs">Prev</span>
+	   <span class="hidden-xs"></span>
 </div>
 </li>';
 	}
@@ -401,7 +401,7 @@ if($pvalue == $totalpages){
 	if ($pvalue < $totalpages) {
 	$output .='<li style="padding-top: 4px; padding-left: 17px;">
 	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-		<span class="hidden-xs" style="float: left;">Next</span>
+		<span class="hidden-xs" style="float: left;"></span>
 		<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
 	</div>
 	</li>';
@@ -457,7 +457,7 @@ if($pvalue == $totalpages){
 if ($pvalue < $totalpages) {
 $output .='<li style="padding-top: 4px; padding-left: 17px;">
 <div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-	<span class="hidden-xs" style="float: left;">Next</span>
+	<span class="hidden-xs" style="float: left;"></span>
 	<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
 </div>
 </li>';
