@@ -344,9 +344,9 @@ $output = '';
     <ul class="pagination">';
 	if ($pvalue > 1) {
 		if($totalpages != 1){
-	$output .='<li>
+	$output .='<li style="padding-top: 4px; padding-left: 17px;">
 	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
-		<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
+		<div style="float: left; margin-top:5px; margin-right:5px;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
     <div style="float: left;  cursor: pointer; ">
