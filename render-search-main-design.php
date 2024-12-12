@@ -1340,7 +1340,7 @@ $lastTag = current(array_slice($tagResult, -1));
 
     // Display ellipsis after the first page if needed
     if ($startPage > 2) {
-        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
+        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
     }
 
     // Display the range of pages around the current page
@@ -1350,7 +1350,7 @@ $lastTag = current(array_slice($tagResult, -1));
 
     // Display ellipsis before the last page if needed
     if ($endPage < $num_of_pages - 1) {
-        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
+        echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
     }
 
     // Display the last page
@@ -1492,7 +1492,7 @@ console.log(array, array.reverse());
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 0px 10px !important; /* Add padding for a better click area */
+    padding: 0px 5px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
     
