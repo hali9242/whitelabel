@@ -345,11 +345,15 @@ $output = '';
 	if ($pvalue > 1) {
 		if($totalpages != 1){
 	$output .='<li>
-	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
-		<span class="btn-prev"></span>
-	       <span class="hidden-xs">Prev</span>
-	</div>
-	</li>';
+                    <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
+					<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; ">
+        <span class="hidden-xs"></span>
+    </div>
+                    </div>
+                </li>';
 		}
 	}
 	if(empty($pvalue) or $pvalue == '' or $pvalue == 0 or $pvalue == '0'){
@@ -381,12 +385,16 @@ $output = '';
 
 
 		if ($pvalue < $totalpages) {
-		$output .='<li style="padding-top: 4px; padding-left: 17px;">
-		<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-			<span class="hidden-xs" style="float: left;">Next</span>
-			<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
-		</div>
-		</li>';
+		$output .=' <li>
+                    <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
+					<div style="float: left;   cursor: pointer;  align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+    <div style="float: left;  cursor: pointer;   align-items: center; margin-top:4px; margin-left:4px;">
+        <span class="btn-next"></span>
+    </div>
+                    </div>
+                </li>';
 		}
 		
 		
@@ -418,12 +426,16 @@ $output = '';
 	// $output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
 	// }
 	if ($pvalue < $totalpages) {
-	$output .='<li style="padding-top: 4px; padding-left: 17px;">
-	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-		<span class="hidden-xs" style="float: left;">Next</span>
-		<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
-	</div>
-	</li>';
+	$output .=' <li>
+                    <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew+1); ?>" search="0">
+					<div style="float: left;   cursor: pointer;  align-items: center;">
+        <span class="hidden-xs"></span>
+    </div>
+    <div style="float: left;  cursor: pointer;   align-items: center; margin-top:4px; margin-left:4px;">
+        <span class="btn-next"></span>
+    </div>
+                    </div>
+                </li>';
 	}
 		
 		$output .='</ul>
