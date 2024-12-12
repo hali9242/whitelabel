@@ -389,12 +389,24 @@ $output = '';
 		</li>';
 		}
 		
-		
+		if ($totalpages > 1) {
 		$output .='</ul>
-			
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;pages</span>
+			</p>
+	</nav>';
+		} else {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;page</span>
+			</p>
 	</nav>';
 		}
-		else{
+		}else{
 	//for ($i=1; $i <= min($totalpages,10); $i++) {
 
 		if($totalpages == 1){
@@ -425,12 +437,24 @@ $output = '';
 	</div>
 	</li>';
 	}
-		
+		if ($totalpages > 1) {
 		$output .='</ul>
-			
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;pages</span>
+			</p>
+	</nav>';
+		} else {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;page</span>
+			</p>
 	</nav>';
 		}
-	
+	}
 //if($rcount==0)	$output='';
 $return_arr['message'] = $output;
 echo json_encode($return_arr);
