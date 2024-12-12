@@ -1190,11 +1190,11 @@ if($extractedlifestage){
 if ($pagernew > 1) {
     $output .= '<li>
         <div class="prv-btn" lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew - 1) . '" search="0">
-            <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
+            <div style="float: left; margin-top:4px; margin-right:4px;  cursor: pointer;">
                 <span class="btn-previous"></span>
             </div>
             <div style="float:left;margin-top: 7px; cursor: pointer; margin-right: 22px;">
-                <span class="hidden-xs">Prev</span>
+                <span class="hidden-xs"></span>
             </div>
         </div>
     </li>';
@@ -1209,7 +1209,7 @@ $endPage = min($num_of_pages, $pagernew + 2); // End 2 pages after current
 if ($startPage > 1) {
     $output .= '<li class="pg-btn" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="1" search="0">1</li>';
     if ($startPage > 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+        $output .= '<li class="pg-btn disabled" style="cursor: default;">..</li>';
     }
 }
 
@@ -1222,7 +1222,7 @@ for ($i = $startPage; $i <= $endPage; $i++) {
 // Always show the last page
 if ($endPage < $num_of_pages) {
     if ($endPage < $num_of_pages - 1) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default;">...</li>';
+        $output .= '<li class="pg-btn disabled" style="cursor: default;">..</li>';
     }
     $output .= '<li class="pg-btn" style="padding:5px 6px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
 }
@@ -1232,7 +1232,7 @@ if ($pagernew < $num_of_pages) {
     $output .= '<li>
         <div class="next-btn" lifestage="0" type="' . $ttvalue . '" pager="' . ($pagernew + 1) . '" search="0">
             <div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 4px; cursor: pointer;">
-                <span class="hidden-xs">Next</span>
+                <span class="hidden-xs"></span>
             </div>
             <div style="float:left;margin-top: 10px; cursor: pointer;">
                 <span class="btn-next"></span>
