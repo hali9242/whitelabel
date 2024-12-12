@@ -339,80 +339,135 @@ $totalpages = ceil( $rcount / $limit );
 //echo $rcount;
 //echo $totalpages;
 $output = '';
-
-$output .= '<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
+    
+    $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="paging-holder clear">
     <ul class="pagination">';
-
-if ($pvalue > 1) {
-    if ($totalpages != 1) {
-        $output .= '<li>
-                    <div class="prv-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew-1); ?>" search="0">
-                    <div style="float: left; margin-top:4px; margin-right:4px; cursor: pointer;">
-                        <span class="btn-prev"></span>
-                    </div>
-                    <div style="float: left; cursor: pointer;">
-                        <span class="hidden-xs"></span>
-                    </div>
-                    </div>
-                </li>';
+	if ($pvalue > 1) {
+		if($totalpages != 1){
+	$output .='<li>
+	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
+		<span class="btn-prev"></span>
+	       <span class="hidden-xs">Prev</span>
+	</div>
+	</li>';
+		}
+	}
+	if(empty($pvalue) or $pvalue == '' or $pvalue == 0 or $pvalue == '0'){
+        $pvalue = 1;
     }
-}
+	if ($pvalue == $totalpages) {
+		if ($totalpages == 1) {
+			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+		} else if ($totalpages <= 6) {
+			// If total pages are 6 or fewer, display all page numbers and the last page
+			for ($i = 1; $i <= $totalpages; $i++) {
+				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+			}
+			$output .= '<li>...</li>'; // Add ellipses
+			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
+		} else if ($pvalue > 1 && $pvalue < $totalpages) {
+			// If the current page is in the middle
+			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+			$output .= '<li>...</li>'; // Add ellipses
+	
+			// Show the previous, current, and next pages
+			for ($i = max(2, $pvalue - 1); $i <= min($totalpages - 1, $pvalue + 1); $i++) {
+				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+			}
+	
+			$output .= '<li>...</li>'; // Add ellipses
+			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
+		} else {
+			// If the current page is the first page
+			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+			$output .= '<li>...</li>'; // Add ellipses
+	
+			// Show the last 6 pages
+			for ($i = $totalpages - 5; $i <= $totalpages; $i++) {
+				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+			}
+		}
+	}
+		// 	for ($i= max(1, $pvalue); $i <= min($pvalue + 5, $totalpages); $i++) {	
+		// $output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
+		// }
 
-if (empty($pvalue) || $pvalue == '' || $pvalue == 0 || $pvalue == '0') {
-    $pvalue = 1;
-}
 
-if ($totalpages <= 6) {
-    // If total pages are 6 or fewer, display all page numbers
-    for ($i = 1; $i <= $totalpages; $i++) {
-        $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-    }
-} else {
-    // If the current page is close to the beginning
-    if ($pvalue <= 3) {
-        for ($i = 1; $i <= 5; $i++) {
-            $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-        }
-        $output .= '<li>...</li>'; // Add ellipses
-        $output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
-    } elseif ($pvalue >= $totalpages - 2) {
-        // If the current page is close to the end
-        $output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
-        $output .= '<li>...</li>'; // Add ellipses
-        for ($i = $totalpages - 4; $i <= $totalpages; $i++) {
-            $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-        }
-    } else {
-        // If the current page is in the middle
-        $output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes ="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
-        $output .= '<li>...</li>'; // Add ellipses
+		if ($pvalue < $totalpages) {
+		$output .='<li style="padding-top: 4px; padding-left: 17px;">
+		<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
+			<span class="hidden-xs" style="float: left;">Next</span>
+			<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
+		</div>
+		</li>';
+		}
+		
+		if ($totalpages > 1) {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;pages</span>
+			</p>
+	</nav>';
+		} else {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;page</span>
+			</p>
+	</nav>';
+		}
+		}else{
+	//for ($i=1; $i <= min($totalpages,10); $i++) {
 
-        for ($i = $pvalue - 1; $i <= $pvalue + 1; $i++) {
-            if ($i > 0 && $i < $totalpages + 1) {
-                $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-            }
-        }
+		if($totalpages == 1){
+				$output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
+		} else if($totalpages<= 6) {
+			for ($i= 1 ; $i <= $totalpages; $i++) {
+				$output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
+			}
+		} else if((6 + $pvalue -1)<$totalpages){
+			for ($i= (1 + $pvalue -1) ; $i <= (6 + $pvalue -1) ; $i++) {
+				$output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
+			}
+		} else {
+			for ($i= ($totalpages-5); $i <=  $totalpages ; $i++)
+			{
+				$output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
+			 }
+		}
 
-        $output .= '<li>...</li>'; // Add ellipses
-        $output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
-    }
-}
-
-if ($pvalue < $totalpages) {
-    $output .= '<li>
-                    <div class="next-btn" lifestage="0" type="<?php echo $ttvalue; ?>" pager="<?php echo ($pagernew + 1); ?>" search="0">
-                    <div style="float: left; cursor: pointer; align-items: center;">
-                        <span class="hidden-xs"></span>
-                    </div>
-                    <div style="float: left; cursor: pointer; align-items: center; margin-top:4px; margin-left:4px;">
-                        <span class="btn-next"></span>
-                    </div>
-                    </div>
-                </li>';
-}
-
-$output .= '</ul>
-    </nav>';
+	// 	for ($i= max(1, $pvalue ); $i <= min($pvalue + 5, $totalpages); $i++) {	
+	// $output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
+	// }
+	if ($pvalue < $totalpages) {
+	$output .='<li style="padding-top: 4px; padding-left: 17px;">
+	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
+		<span class="hidden-xs" style="float: left;">Next</span>
+		<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
+	</div>
+	</li>';
+	}
+		if ($totalpages > 1) {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;pages</span>
+			</p>
+	</nav>';
+		} else {
+		$output .='</ul>
+			<p>
+				<span>of&nbsp;</span>
+				<span class="ng-binding">'.$totalpages.'</span>
+				<span>&nbsp;page</span>
+			</p>
+	</nav>';
+		}
+	}
 //if($rcount==0)	$output='';
 $return_arr['message'] = $output;
 echo json_encode($return_arr);
