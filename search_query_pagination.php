@@ -346,8 +346,12 @@ $output = '';
 		if($totalpages != 1){
 	$output .='<li>
 	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
-		<span class="btn-prev"></span>
-	       <span class="hidden-xs">Prev</span>
+		<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; ">
+        <span class="hidden-xs"></span>
+    </div>
 	</div>
 	</li>';
 		}
@@ -383,30 +387,18 @@ $output = '';
 		if ($pvalue < $totalpages) {
 		$output .='<li style="padding-top: 4px; padding-left: 17px;">
 		<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-			<span class="hidden-xs" style="float: left;">Next</span>
-			<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
+			<div style="float:left;margin-left: 5px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 5px;  cursor: pointer;"><span class="btn-next"></span></div>
 		</div>
 		</li>';
 		}
 		
-		if ($totalpages > 1) {
+		
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
+			
 	</nav>';
 		}
-		}else{
+		else{
 	//for ($i=1; $i <= min($totalpages,10); $i++) {
 
 		if($totalpages == 1){
@@ -432,29 +424,17 @@ $output = '';
 	if ($pvalue < $totalpages) {
 	$output .='<li style="padding-top: 4px; padding-left: 17px;">
 	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-		<span class="hidden-xs" style="float: left;">Next</span>
-		<span class="btn-next" style="float: left; margin-top: 6px; margin-left: 10px;"></span>
+		<div style="float:left;margin-left: 5px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 5px;  cursor: pointer;"><span class="btn-next"></span></div>
 	</div>
 	</li>';
 	}
-		if ($totalpages > 1) {
+		
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
+			
 	</nav>';
 		}
-	}
+	
 //if($rcount==0)	$output='';
 $return_arr['message'] = $output;
 echo json_encode($return_arr);
