@@ -1229,19 +1229,17 @@ if ($startPage > 1) {
     }
 }
 
-// Display the range of pages around the current page
+// Display the page numbers in range
 for ($i = $startPage; $i <= $endPage; $i++) {
-	echo '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
+    $output .= '<li class="pg-btn ' . ($pagernew == $i ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $i . '" search="0">' . $i . '</li>';
 }
 
-// Display ellipsis before the last page if needed
-if ($endPage < $num_of_pages - 1) {
-	echo '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE; font-size:22px; position:relative; bottom :5px;">..</li>';
-}
-
-// Display the last page
-if ($num_of_pages > 1) {
-	echo '<li class="pg-btn" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
+// Display ellipsis and the last page if needed
+if ($endPage < $num_of_pages) {
+    if ($endPage < $num_of_pages - 1) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE;">...</li>';
+    }
+    $output .= '<li class="pg-btn" style="padding:5px 6px; font-size: 16px; cursor: pointer" lifestage="0" typevalue="' . $dvaluen . '" pagerv="' . $num_of_pages . '" search="0">' . $num_of_pages . '</li>';
 }
 
 // "Next" button
@@ -1369,7 +1367,7 @@ console.log(array, array.reverse());
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 0px 5px !important; /* Add padding for a better click area */
+    padding: 0px 10px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
 	margin-left:5px !important;
