@@ -6977,15 +6977,15 @@ tbody.collapse.in {
 }
 
 
-.paging-holder .pagination li.active{
+li.pg-btn-search.active{
 	background-color: #6BD9DE !important;
     color: #fff !important;
 }
-.paging-holder .pagination li:hover{
+li.pg-btn-search:hover{
 	background-color: #6BD9DE !important;
     color: #fff !important;
 }
-.paging-holder .pagination li{
+li.pg-btn-search {
 	text-decoration: none !important;
     padding: 0px 5px !important;
     border-radius: 5px !important;
