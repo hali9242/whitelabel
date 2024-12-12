@@ -362,19 +362,9 @@ $output = '';
 				$output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
 			} else if($totalpages<= 6) {
 				for ($i= 1 ; $i <= $totalpages; $i++) {
-					
 					$output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
 				}
-				// Add ellipses if you want to indicate that there are more pages
-				if ($totalpages > 1) {
-					$output .= '<li>...</li>'; // Add ellipses
-					$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>'; // Show the last page
-				}
-			} else {
-				// If total pages are greater than 6
-				$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>'; // Show the first page
-			} 
-		}else if((6 + $pvalue -1)<$totalpages){
+			} else if((6 + $pvalue -1)<$totalpages){
 				for ($i= (1 + $pvalue -1) ; $i <= (6 + $pvalue -1) ; $i++) {
 					$output .='<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'"  sort="'.$sort.'">'.$i.'</li>';
 				}
