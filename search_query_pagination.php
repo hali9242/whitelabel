@@ -369,7 +369,7 @@ $output = '';
 			for ($i = 1; $i <= $totalpages; $i++) {
 				$output .= '<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'" sort="'.$sort.'">'.$i.'</li>';
 			}
-		} else if (($pvalue - 1) <= 6) {
+		} else if (($pvalue - 1) <= 3) {
 			// If the current page is close to the beginning, display the first 6 pages and ellipses for the rest
 			for ($i = 1; $i <= 6; $i++) {
 				$output .= '<li class="pg-btn-search '.($pvalue == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="'.$i.'" sort="'.$sort.'">'.$i.'</li>';
