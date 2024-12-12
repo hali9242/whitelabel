@@ -711,36 +711,45 @@ if ($page > 1) {
     </li>';
 }
 
-// Display page numbers with ellipsis logic
-$maxPagesToShow = 2; // Total number of pages to show at once, including ellipsis
 
-if ($totalpages > $maxPagesToShow) {
+$maxVisible = 3; // Number of pages visible around the current page
+$output = ''; // Initialize output
+
+if ($totalpages > $maxVisible + 2) { // Ensure there's room for ellipsis
     // Display the first page
-    $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
+    $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="1" search="' . $searchvalue . '" sort="' . $sort . '">1</li>';
 
-    if ($page > 2) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
+    // Display ellipsis after the first page if needed
+    if ($page > $maxVisible) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
     }
 
-    // Display the range of pages around the current page
-    $start = max(2, $page - 2);
-    $end = min($totalpages - 1, $page + 1);
+    // Calculate the start and end range for visible pages
+    $start = max(2, $page - 1); // Start no earlier than the second page
+    $end = min($totalpages - 1, $page + 1); // End no later than the second-to-last page
+
+    // Display pages around the current page
     for ($i = $start; $i <= $end; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
     }
 
-    if ($page < $totalpages - 3) {
-        $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
+    // Display ellipsis before the last page if needed
+    if ($page < $totalpages - $maxVisible) {
+        $output .= '<li class="pg-btn disabled" style="cursor: default; color:#6BD9DE;">...</li>';
     }
 
     // Display the last page
-    $output .= '<li class="pg-btn '.($page == $totalpages ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$totalpages.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$totalpages.'</li>';
+    $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $totalpages . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $totalpages . '</li>';
 } else {
-    // Display all pages if the total number is less than or equal to the max to show
+    // Display all pages if the total number is less than or equal to maxVisible + 2
     for ($i = 1; $i <= $totalpages; $i++) {
-        $output .= '<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'" search="'.$searchvalue.'" sort="'.$sort.'">'.$i.'</li>';
+        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; font-size: 16px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
     }
 }
+
+echo $output;
+
+
 
 // Display "next" button if not on the last page
 if ($page < $totalpages) {
