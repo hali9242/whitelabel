@@ -712,13 +712,13 @@ if ($page > 1) {
 }
 
 // Display page numbers with ellipsis logic
-$maxPagesToShow = 3; // Total number of pages to show at once, including ellipsis
+$maxPagesToShow = 2; // Total number of pages to show at once, including ellipsis
 
 if ($totalpages > $maxPagesToShow) {
     // Display the first page
     $output .= '<li class="pg-btn '.($page == 1 ? 'active' : '').'" style="padding:5px 6px; font-size: 16px ; cursor: pointer;" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="1" search="'.$searchvalue.'" sort="'.$sort.'">1</li>';
 
-    if ($page > 3) {
+    if ($page > 2) {
         $output .= '<li class="pg-btn disabled" style="cursor: default; color: #6BD9DE">...</li>';
     }
 
