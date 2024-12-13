@@ -280,16 +280,16 @@ $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="pagin
     <ul class="pagination">';
 	if ($page > 1) {
 		if($totalpages != 1){
-		$output .='<li>
-			<div class="prv-btn-tags" search="0" sort="0" tagid="'.$tagids.'" type="'.$ttvalue.'" pager="'.($page-1).'" search="0" sort="0">
-				<div style="float:left;margin-right: 5px;margin-left: 10px;margin-top: 11px; cursor: pointer;">
-					<span class="btn-prev"></span>
-				</div>
-				<div style="float:left;margin-top: 7px;  cursor: pointer; margin-right: 22px;">
-					<span class="hidden-xs">Prev</span>
-				</div>
-			</div>
-		 </li>';
+		$output .='<li style="padding-top: 4px; padding-left: 17px;">
+	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
+		<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
+        <span class="btn-prev"></span>
+    </div>
+    <div style="float: left;  cursor: pointer; ">
+        <span class="hidden-xs"></span>
+    </div>
+	</div>
+	</li>';
 	}
 }
 								
@@ -318,29 +318,19 @@ $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="pagin
 		// }
 
 		if ($page < $totalpages) {
-			$output .='<li><div class="next-btn-tags" tagid="'.$tagids.'" type="'.$ttvalue.'" pager="'.($page+1).'" search="0" sort="0">
-				<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
-				<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-			</div></li>';
+			$output .='<li style="padding-top: 4px; padding-left: 17px;">
+		<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
+			<div style="float:left;margin-left: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 4px;  cursor: pointer;"><span class="btn-next"></span></div>
+		</div>
+		</li>';
 		}
-		if ($totalpages > 1) {
+		
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
+			
 	</nav>';
 		}
-	}else{
+	else{
 
         if($totalpages == 1){
                 $output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
@@ -364,29 +354,19 @@ $output .='<nav aria-label="balance pager m14-m15" balance-pager="" class="pagin
 		// }
 
 		if ($page < $totalpages) {
-			$output .='<li><div class="next-btn-tags" tagid="'.$tagids.'" type="'.$ttvalue.'" pager="'.($page+1).'" search="0" sort="0">
-				<div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs">Next</span></div>
-				<div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
-			</div></li>';
+			$output .='<li style="padding-top: 4px; padding-left: 17px;">
+	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
+		<div style="float:left;margin-left: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 4px;  cursor: pointer;"><span class="btn-next"></span></div>
+	</div>
+	</li>';
 		}
-		if ($totalpages > 1) {
+		
 		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;pages</span>
-			</p>
-	</nav>';
-		} else {
-		$output .='</ul>
-			<p>
-				<span>of&nbsp;</span>
-				<span class="ng-binding">'.$totalpages.'</span>
-				<span>&nbsp;page</span>
-			</p>
+			
 	</nav>';
 		}
-}
+
 $return_arr['message'] = $output;
 echo json_encode($return_arr);
 ?>
