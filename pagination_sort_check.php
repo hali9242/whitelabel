@@ -799,8 +799,8 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
                 
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-                    <div style="float:left;margin-left: 4px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
-                    <div style="float:left;  cursor: pointer;"><span class="btn-next"></span></div>
+                    <div style="float:left;margin-left: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left; margin-top: 5px; cursor: pointer;"><span class="btn-next"></span></div>
                 </div></li>';
             }
         
