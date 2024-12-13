@@ -378,7 +378,7 @@ $output = '';
 			$start = max(1, $pvalue - 1); // One page before current
 			$end = min($totalpages, $pvalue + 1); // One page after current
 			for ($i = $start; $i <= $end; $i++) {
-				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; " resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 			}
 		
 			if ($pvalue < $totalpages - 1) {
