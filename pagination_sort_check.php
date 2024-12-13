@@ -664,7 +664,7 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
     if(empty($page) or $page == '' or $page == 0 or $page == '0'){
         $page = 1;
     }                           
-        if ($page < $totalpages) {
+        if ($page > 1) {
             if($totalpages != 1){
                 $output .='<li>
                 <div class="prv-btn" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page-1).'"  search="'.$searchvalue.'"  sort="'.$sort.'">
@@ -735,8 +735,8 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
 
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn" search="'.$searchvalue.'"  sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-                    <div style="float:left;margin-left:4px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
-                    <div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
+                    <div style="float:left;;margin-top: 5px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;  cursor: pointer;"><span class="btn-next"></span></div>
                 </div></li>';
             }
 			if($totalpages<2) $pgn='page'; else $pgn='pages';
@@ -799,8 +799,8 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
                 
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
-                    <div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
-                    <div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
+                    <div style="float:left;margin-left: 4px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;  cursor: pointer;"><span class="btn-next"></span></div>
                 </div></li>';
             }
         
