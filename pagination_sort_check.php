@@ -678,23 +678,35 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
                 </li>';
             }
         }                           
-        if($page == $totalpages){
-            if($totalpages == 1){
-                $output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
-            } else if($totalpages<= 6) {
-                for ($i= 1 ; $i <= $totalpages; $i++) {
-                    $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+        if ($page == $totalpages) {
+            if ($totalpages == 1) {
+                $output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+            } elseif ($totalpages <= 6) {
+                // Display all pages for total pages <= 6
+                for ($i = 1; $i <= $totalpages; $i++) {
+                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                 }
-            } else if((6 + $page -1)<$totalpages){
-                for ($i= (1 + $page -1) ; $i <= (6 + $page -1) ; $i++) {
-                    $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+            } elseif ((6 + $page - 1) < $totalpages) {
+                // Add "..." before the visible pages
+                $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                for ($i = (1 + $page - 1); $i <= (6 + $page - 1); $i++) {
+                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                 }
-            } else{
-                for ($i= ($totalpages-5); $i <=  $totalpages ; $i++)
-                {
-                    $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+                // Add "..." after the visible pages
+                if ((6 + $page - 1) < $totalpages) {
+                    $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                }
+            } else {
+                // Add "..." before the visible pages
+                if ($page > 6) {
+                    $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                }
+                for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
+                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                 }
             }
+        
+        
 
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn" search="'.$searchvalue.'"  sort="'.$sort.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
@@ -704,55 +716,51 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
             }
 			if($totalpages<2) $pgn='page'; else $pgn='pages';
             $output .='</ul>
-                <p>
-                    <span>of&nbsp;</span>
-                    <span class="ng-binding">'.$totalpages.'</span>
-                    <span>&nbsp;'.$pgn.'</span>
-                </p>
+               
         </nav>';
 
             }else{
-                if($totalpages == 1){
-                $output .='<li class="active" style="padding:5px 6px; cursor: pointer"  totalpages="'.$totalpages.'"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" queryvalue="'.$searchvalue.'" pagerv="1"  sort="'.$sort.'">1</li>';
-                } else if($totalpages<= 6) {
-                    for ($i= 1 ; $i <= $totalpages; $i++) {
-                        $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+                if ($totalpages == 1) {
+                    $output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+                } elseif ($totalpages <= 6) {
+                    // Display all pages when total pages are <= 6
+                    for ($i = 1; $i <= $totalpages; $i++) {
+                        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                     }
-                } else if((6 + $page -1)<$totalpages){
-                    for ($i= (1 + $page -1) ; $i <= (6 + $page -1) ; $i++) {
-                        $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+                } elseif ((6 + $page - 1) < $totalpages) {
+                    // Add "..." before the visible range
+                    if ($page > 1) {
+                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
                     }
-                } else{
-                    for ($i= ($totalpages-5); $i <=  $totalpages ; $i++) 
-                    {
-                        $output .='<li class="pg-btn '.($page == $i ? 'active' : '').'" style="padding:5px 6px; cursor: pointer" lifestage="'.$lifestage.'" typevalue="'.$rtypes.'" pagerv="'.$i.'"  search="'.$searchvalue.'"  sort="'.$sort.'">'.$i.'</li>';
+                    for ($i = (1 + $page - 1); $i <= (6 + $page - 1); $i++) {
+                        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
+                    }
+                    // Add "..." after the visible range
+                    if ((6 + $page - 1) < $totalpages) {
+                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                    }
+                } else {
+                    // Add "..." before the visible range if current page > 6
+                    if ($page > 6) {
+                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                    }
+                    for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
+                        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                     }
                 }
-
+                
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
                     <div style="float:left;margin-right: 5px;margin-left: 22px;margin-top: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
                     <div style="float:left;margin-top: 10px;  cursor: pointer;"><span class="btn-next"></span></div>
                 </div></li>';
             }
-        if ($totalpages > 1) {
+        
         $output .='</ul>
-            <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding">'.$totalpages.'</span>
-                <span>&nbsp;pages </span>
-            </p>
-    </nav>';
-        } else {
-        $output .='</ul>
-            <p>
-                <span>of&nbsp;</span>
-                <span class="ng-binding">'.$totalpages.'</span>
-                <span>&nbsp;page</span>
-            </p>
+            
     </nav>';
         }
-        }
+        
                                         
             $return_arr['message'] = $output;
             echo json_encode($return_arr);
