@@ -680,32 +680,57 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
         }                           
         if ($page == $totalpages) {
             if ($totalpages == 1) {
-                $output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+                // Single page
+                $output .= '<li class="active" style="padding:5px 6px; cursor: pointer;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
             } elseif ($totalpages <= 6) {
-                // Display all pages for total pages <= 6
-                for ($i = 1; $i <= $totalpages; $i++) {
-                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
+                // Total pages less than or equal to 6
+                // Always show the first page
+                $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="1" search="' . $searchvalue . '" sort="' . $sort . '">1</li>';
+                
+                if ($page > 2) {
+                    // Add ellipsis for pages beyond the first two
+                    $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
                 }
-            } elseif ((6 + $page - 1) < $totalpages) {
-                // Add "..." before the visible pages
-                $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
-                for ($i = (1 + $page - 1); $i <= (6 + $page - 1); $i++) {
-                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
+            
+                // Show dynamic range of pages
+                $start = max(2, $page - 1); // Start from one before the current page
+                $end = min($totalpages - 1, $page + 1); // End one after the current page
+                for ($i = $start; $i <= $end; $i++) {
+                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                 }
-                // Add "..." after the visible pages
-                if ((6 + $page - 1) < $totalpages) {
-                    $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+            
+                if ($page < $totalpages - 1) {
+                    // Add ellipsis if not on the last two pages
+                    $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
                 }
+            
+                // Always show the last page
+                $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $totalpages . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $totalpages . '</li>';
             } else {
-                // Add "..." before the visible pages
-                if ($page > 6) {
-                    $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                // Total pages greater than 6
+                $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="1" search="' . $searchvalue . '" sort="' . $sort . '">1</li>';
+            
+                if ($page > 3) {
+                    // Add ellipsis before the current range
+                    $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
                 }
-                for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
-                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
+            
+                // Show dynamic page range
+                $start = max(2, $page - 1);
+                $end = min($totalpages - 1, $page + 1);
+                for ($i = $start; $i <= $end; $i++) {
+                    $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                 }
+            
+                if ($page < $totalpages - 2) {
+                    // Add ellipsis after the current range
+                    $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+                }
+            
+                // Always show the last page
+                $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer;" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $totalpages . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $totalpages . '</li>';
             }
-        
+            
         
 
             if ($page < $totalpages) {
@@ -721,33 +746,56 @@ if($lifestage == '0' AND $searchvalue != '0' AND $rtypes == '0'){
 
             }else{
                 if ($totalpages == 1) {
+                    // Single page
                     $output .= '<li class="active" style="padding:5px 6px; cursor: pointer" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
                 } elseif ($totalpages <= 6) {
-                    // Display all pages when total pages are <= 6
-                    for ($i = 1; $i <= $totalpages; $i++) {
+                    // Total pages less than or equal to 6 with ellipsis
+                    $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="1" search="' . $searchvalue . '" sort="' . $sort . '">1</li>';
+                
+                    if ($page > 2) {
+                        // Add ellipsis after the first page if the current page is beyond 2
+                        $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+                    }
+                
+                    // Display middle pages
+                    $start = max(2, $page - 1);
+                    $end = min($totalpages - 1, $page + 1);
+                    for ($i = $start; $i <= $end; $i++) {
                         $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                     }
-                } elseif ((6 + $page - 1) < $totalpages) {
-                    // Add "..." before the visible range
-                    if ($page > 1) {
-                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                
+                    if ($page < $totalpages - 1) {
+                        // Add ellipsis before the last page if the current page is not near the end
+                        $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
                     }
-                    for ($i = (1 + $page - 1); $i <= (6 + $page - 1); $i++) {
-                        $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
-                    }
-                    // Add "..." after the visible range
-                    if ((6 + $page - 1) < $totalpages) {
-                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
-                    }
+                
+                    // Always show the last page
+                    $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $totalpages . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $totalpages . '</li>';
                 } else {
-                    // Add "..." before the visible range if current page > 6
-                    if ($page > 6) {
-                        $output .= '<li style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
+                    // Total pages greater than 6
+                    $output .= '<li class="pg-btn ' . ($page == 1 ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="1" search="' . $searchvalue . '" sort="' . $sort . '">1</li>';
+                
+                    if ($page > 3) {
+                        // Add ellipsis before the visible range
+                        $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
                     }
-                    for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
+                
+                    // Dynamic range for current page
+                    $start = max(2, $page - 1);
+                    $end = min($totalpages - 1, $page + 1);
+                    for ($i = $start; $i <= $end; $i++) {
                         $output .= '<li class="pg-btn ' . ($page == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $i . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $i . '</li>';
                     }
+                
+                    if ($page < $totalpages - 2) {
+                        // Add ellipsis after the visible range
+                        $output .= '<li style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+                    }
+                
+                    // Always show the last page
+                    $output .= '<li class="pg-btn ' . ($page == $totalpages ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer" lifestage="' . $lifestage . '" typevalue="' . $rtypes . '" pagerv="' . $totalpages . '" search="' . $searchvalue . '" sort="' . $sort . '">' . $totalpages . '</li>';
                 }
+                
                 
             if ($page < $totalpages) {
                 $output .='<li><div class="next-btn"  sort="'.$sort.'" search="'.$searchvalue.'" lifestage="'.$lifestage.'" type="'.$rtypes.'" pager="'.($page+1).'">
