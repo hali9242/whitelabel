@@ -346,7 +346,7 @@ $output = '';
 		if($totalpages != 1){
 	$output .='<li style="padding-top: 4px; padding-left: 17px;">
 	<div class="search-prv-click" query="'.$searchvalue.'" pager="'.($pvalue-1).'" aria-label="Next"  resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'"   sort="'.$sort.'">
-		<div style="float: left; margin-top:5px; margin-right:5px;   cursor: pointer;">
+		<div style="float: left; margin-top:4px; margin-right:4px;   cursor: pointer;">
         <span class="btn-prev"></span>
     </div>
     <div style="float: left;  cursor: pointer; ">
@@ -363,14 +363,14 @@ $output = '';
 		//for ($i=1; $i <= min($totalpages,10); $i++) {
 
 		if ($totalpages == 1) {
-			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer; " totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 		} else if ($totalpages <= 6) {
 			if ($pvalue > 2) {
 				// Always show the first page
-				$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; " resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+				$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 				// Add ellipsis if not on the first two pages
 				if ($pvalue > 3) {
-					$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+					$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 				}
 			}
 		
@@ -378,16 +378,16 @@ $output = '';
 			$start = max(1, $pvalue - 1); // One page before current
 			$end = min($totalpages, $pvalue + 1); // One page after current
 			for ($i = $start; $i <= $end; $i++) {
-				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; " resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 			}
 		
 			if ($pvalue < $totalpages - 1) {
 				// Add ellipsis if not on the last two pages
 				if ($pvalue < $totalpages - 2) {
-					$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+					$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 				}
 				// Always show the last page
-				$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; " resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
+				$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
 			}
 		} else if ((6 + $pvalue - 1) < $totalpages) {
 			for ($i = (1 + $pvalue - 1); $i <= (6 + $pvalue - 1); $i++) {
@@ -396,11 +396,12 @@ $output = '';
 		} else {
 			// Include ellipses for large pagination
 			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
-			$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+			$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 			for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
 				$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 			}
 		}
+		
 		
 
 		// 	for ($i= max(1, $pvalue); $i <= min($pvalue + 5, $totalpages); $i++) {	
@@ -411,8 +412,8 @@ $output = '';
 		if ($pvalue < $totalpages) {
 		$output .='<li style="padding-top: 4px; padding-left: 17px;">
 		<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-			<div style="float:left;margin-left: 5px; cursor: pointer;"><span class="hidden-xs"></span></div>
-                    <div style="float:left;margin-top: 5px;  cursor: pointer;"><span class="btn-next"></span></div>
+			<div style="float:left;margin-left: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 4px;  cursor: pointer;"><span class="btn-next"></span></div>
 		</div>
 		</li>';
 		}
@@ -435,7 +436,7 @@ $output = '';
 			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 			// Add ellipsis if not on the first two pages
 			if ($pvalue > 3) {
-				$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+				$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 			}
 		}
 	
@@ -447,7 +448,7 @@ $output = '';
 		if ($pvalue < $totalpages - 1) {
 			// Add ellipsis if not on the last two pages
 			if ($pvalue < $totalpages - 2) {
-				$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+				$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 			}
 			// Always show the last page
 			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
@@ -460,7 +461,7 @@ $output = '';
 	} else {
 		// Default large pagination case with ellipsis
 		$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
-		$output .= '<li class="disabled" style="padding:5px 6px;">...</li>';
+		$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 		for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
 			$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 		}
@@ -472,8 +473,8 @@ $output = '';
 	if ($pvalue < $totalpages) {
 	$output .='<li style="padding-top: 4px; padding-left: 17px;">
 	<div class="search-nxt-click" style="cursor: pointer" query="'.$searchvalue.'" pager="'.($pvalue+1).'" resourcetypes="'.$resourcetypes.'" lifestage="'.$lifestage.'" sort="'.$sort.'">
-		<div style="float:left;margin-left: 5px; cursor: pointer;"><span class="hidden-xs"></span></div>
-                    <div style="float:left;margin-top: 5px;  cursor: pointer;"><span class="btn-next"></span></div>
+		<div style="float:left;margin-left: 4px; cursor: pointer;"><span class="hidden-xs"></span></div>
+                    <div style="float:left;margin-top: 4px;  cursor: pointer;"><span class="btn-next"></span></div>
 	</div>
 	</li>';
 	}
