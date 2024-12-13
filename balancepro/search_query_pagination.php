@@ -447,7 +447,7 @@ if ($totalpages == 1) {
 
 	// Show the actual range of pages
 	for ($i = max(1, $pvalue - 1); $i <= min($totalpages, $pvalue + 1); $i++) {
-		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 	}
 
 	if ($pvalue < $totalpages - 1) {
@@ -461,14 +461,14 @@ if ($totalpages == 1) {
 } else if ((6 + $pvalue - 1) < $totalpages) {
 	// Pagination for pages greater than 6 with dynamic ranges
 	for ($i = (1 + $pvalue - 1); $i <= (6 + $pvalue - 1); $i++) {
-		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 	}
 } else {
 	// Default large pagination case with ellipsis
 	$output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 	$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 	for ($i = ($totalpages - 5); $i <= $totalpages; $i++) {
-		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 	}
 }
 
