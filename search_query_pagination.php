@@ -357,9 +357,9 @@ if ($pvalue > 1) {
 		if ($totalpages > 1) {
 			// Previous Page Button
 			if ($pvalue > 1) {
-				$output .= '<li style="padding-top: 4px; padding-left: 17px;">
+				$output .= '<li>
 				<div class="search-prv-click" query="' . $searchvalue . '" pager="' . ($pvalue - 1) . '" aria-label="Previous" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" sort="' . $sort . '">
-					<div style="float: left; margin-top:2px; margin-right:2px; cursor: pointer;">
+					<div style="float: left; margin-top:4px; margin-left:4px; cursor: pointer;">
 						<span class="btn-prev"></span>
 					</div>
 				</div>
@@ -409,9 +409,9 @@ if ($pvalue > 1) {
 		
 			// Next Page Button
 			if ($pvalue < $totalpages) {
-				$output .= '<li style="padding-top: 4px; padding-left: 17px;">
+				$output .= '<li>
 				<div class="search-nxt-click" query="' . $searchvalue . '" pager="' . ($pvalue + 1) . '" aria-label="Next" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" sort="' . $sort . '">
-					<div style="float: left; margin-top:2px; margin-right:2px; cursor: pointer;">
+					<div style="float: left; margin-top:4px; margin-right:4px; cursor: pointer;">
 						<span class="btn-next"></span>
 					</div>
 				</div>
@@ -431,7 +431,7 @@ if ($totalpages > 1) {
     if ($pvalue > 1) {
         $output .= '<li style="padding-top: 4px; padding-left: 17px;">
         <div class="search-prv-click" query="' . $searchvalue . '" pager="' . ($pvalue - 1) . '" aria-label="Previous" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" sort="' . $sort . '">
-            <div style="float: left; margin-top:2px; margin-right:2px; cursor: pointer;">
+            <div style="float: left; margin-top:4px; margin-left:4px; cursor: pointer;">
                 <span class="btn-prev"></span>
             </div>
         </div>
@@ -500,9 +500,9 @@ if ($totalpages > 1) {
 
     // Next Page Button
     if ($pvalue < $totalpages) {
-        $output .= '<li style="padding-top: 4px; padding-left: 17px;">
+        $output .= '<li >
         <div class="search-nxt-click" query="' . $searchvalue . '" pager="' . ($pvalue + 1) . '" aria-label="Next" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" sort="' . $sort . '">
-            <div style="float: left; margin-top:2px; margin-right:2px; cursor: pointer;">
+            <div style="float: left; margin-top:4px; margin-right:4px; cursor: pointer;">
                 <span class="btn-next"></span>
             </div>
         </div>
