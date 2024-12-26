@@ -439,6 +439,8 @@ $output = '';
 				$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 			}
 		}
+
+		
 	
 		// Show the actual range of pages
 		for ($i = max(1, $pvalue - 1); $i <= min($totalpages, $pvalue + 1); $i++) {
