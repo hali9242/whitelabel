@@ -407,6 +407,40 @@ if($pvalue == $totalpages){
 		}
 	}
 	
+
+
+	if ($totalpages == 1) {
+		$output .= '<li class="active" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #6BD9DE; color: #fff;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+	} else if ($totalpages <= 10) {
+		// If total pages are 10 or less, show all pages
+		for ($i = 1; $i <= $totalpages; $i++) {
+			$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+		}
+	} else {
+		// If total pages are greater than 10
+		// Always show the first page
+		$output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+	
+		// Add ellipsis if the current page is greater than 4
+		if ($pvalue > 4) {
+			$output .= '<li class="disabled" style="padding:0px 5px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+		}
+	
+		// Show pages around the current page
+		$start = max(2, $pvalue - 1); // One page before current
+		$end = min($totalpages - 1, $pvalue + 1); // One page after current
+		for ($i = $start; $i <= $end; $i++) {
+			$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
+		}
+	
+		// Add ellipsis if there are more pages after the current range
+		if ($pvalue < $totalpages - 2) {
+			$output .= '<li class="disabled" style="padding:0px 5px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+		}
+	
+		// Always show the last page
+		$output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
+	}
 	
 
 	// 	for ($i= max(1, $pvalue); $i <= min($pvalue + 5, $totalpages); $i++) {	
@@ -459,19 +493,9 @@ if ($totalpages == 1) {
 		$output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
 	}
 } else if ((6 + $pvalue - 1) < $totalpages) {
-    // Show the first page
-    $output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
-    
-    // Add ellipsis if there are skipped pages
-    if ($pvalue > 4) {
-        $output .= '<li class="disabled" style="padding:0px 5px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>'; // Ellipsis
-    }
-
-    // Pagination for pages greater than 6 with dynamic ranges
-    for ($i = (1 + $pvalue - 1); $i <= (6 + $pvalue - 1); $i++) {
-        if ($i <= $totalpages) { // Ensure we don't exceed total pages
-            $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-        }
+	// Pagination for pages greater than 6 with dynamic ranges
+	for ($i = (1 + $pvalue - 1); $i <= (6 + $pvalue - 1); $i++) {
+		$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #6BD9DE; color: #fff;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 	}
 } else {
 	// Default large pagination case with ellipsis
