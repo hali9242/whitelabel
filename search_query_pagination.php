@@ -472,9 +472,8 @@ if ($totalpages == 1) {
         if ($i <= $totalpages) { // Ensure we don't exceed total pages
             $output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
         }
-    }
-
-    // Add ellipsis if there are more else {
+	}
+} else {
 	// Default large pagination case with ellipsis
 	$output .= '<li class="pg-btn-search" style="padding:0px 5px; border-radius: 5px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 	$output .= '<li class="disabled" style="padding:0px 5px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
