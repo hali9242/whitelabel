@@ -498,7 +498,7 @@ $output = '';
 		$output .='</ul>
 			
 	</nav>';
-		}
+		
 	
 //if($rcount==0)	$output='';
 $return_arr['message'] = $output;
