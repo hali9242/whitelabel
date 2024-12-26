@@ -363,7 +363,7 @@ $output = '';
 		//for ($i=1; $i <= min($totalpages,10); $i++) {
 
 		if ($totalpages == 1) {
-			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
+			$output .= '<li class="active" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1"</li>';
 		} else if ($totalpages <= 6) {
 			if ($pvalue > 2) {
 				// Always show the first page
@@ -430,18 +430,13 @@ $output = '';
 		// Single page, no ellipsis needed
 		$output .= '<li class="active" style="padding:5px 6px; cursor: pointer; background-color: #6BD9DE; color: #fff;" totalpages="' . $totalpages . '" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 	} else if ($totalpages <= 6) {
-		// Total pages <= 6: Display all pages
-		for ($i = 1; $i <= $totalpages; $i++) {
-			$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
-		}
-	} else {
-		// Total pages > 6: Display range with ellipses
+		// Add ellipses even when total pages <= 6
 		if ($pvalue > 2) {
 			// Always show the first page
 			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="1" sort="' . $sort . '">1</li>';
 			// Add ellipsis if not on the first two pages
 			if ($pvalue > 3) {
-				$output .= '<li class="disabled" style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
+				$output .= '<li class="disabled" style="padding:5px 6px;  font-size:22px; position:relative; bottom :5px; color : #6BD9DE;">..</li>';
 			}
 		}
 	
@@ -449,17 +444,6 @@ $output = '';
 		for ($i = max(1, $pvalue - 1); $i <= min($totalpages, $pvalue + 1); $i++) {
 			$output .= '<li class="pg-btn-search ' . ($pvalue == $i ? 'active' : '') . '" style="padding:5px 6px; cursor: pointer; background-color: ' . ($pvalue == $i ? '#6BD9DE' : '#fff') . '; color: ' . ($pvalue == $i ? '#fff' : '#000') . ';" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $i . '" sort="' . $sort . '">' . $i . '</li>';
 		}
-	
-		if ($pvalue < $totalpages - 1) {
-			// Add ellipsis if not on the last two pages
-			if ($pvalue < $totalpages - 2) {
-				$output .= '<li class="disabled" style="padding:5px 6px; font-size:22px; position:relative; bottom:5px; color:#6BD9DE;">..</li>';
-			}
-			// Always show the last page
-			$output .= '<li class="pg-btn-search" style="padding:5px 6px; cursor: pointer; background-color: #fff; color: #000;" resourcetypes="' . $resourcetypes . '" lifestage="' . $lifestage . '" queryvalue="' . $searchvalue . '" pagerv="' . $totalpages . '" sort="' . $sort . '">' . $totalpages . '</li>';
-		}
-	}
-	
 	
 		if ($pvalue < $totalpages - 1) {
 			// Add ellipsis if not on the last two pages
@@ -498,10 +482,9 @@ $output = '';
 		$output .='</ul>
 			
 	</nav>';
-		
+		}
 	
 //if($rcount==0)	$output='';
 $return_arr['message'] = $output;
 echo json_encode($return_arr);
 ?>
-
