@@ -1150,6 +1150,7 @@ if($extractedlifestage){
 							                              <div class="col-sm-6 col-md-4">
 							                              <!-- resource block starts -->
 							                                <div class="resource-block">
+<a href="'. site_url().$resources.$seo_dvalue. $slug.'" target="_self">
 							                                  <div class="img-holder same-height"><span class="icon-'.$dvaluen.'"></span></div>
 							                                  <div class="text-holder">
 							                                    <p class="dot-holder">'.$titlen.'</p>
@@ -1169,7 +1170,7 @@ if($extractedlifestage){
                                                         //$output .= $tagid;
     												}
                                                          $output .='</div>
-							                                    <a href="'. site_url().$resources.$seo_dvalue. $slug.'" target="_self" class="but btn btn-primary">' . __('VIEW', 'balance').'</a>
+							                                   </a>
 							                                  </div>
 							                                  <span class="icon-lock" style="display: none;"></span>
 							                                </div>
