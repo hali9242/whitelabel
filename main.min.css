@@ -8572,7 +8572,7 @@ a.pg-btn.next-btn:hover{
 
 li.pg-btn {
     text-decoration: none !important;
-    padding: 10px 20px !important; /* Add padding for a better click area */
+    padding: 0px !important; /* Add padding for a better click area */
     border-radius: 5px !important; /* Rounded corners */
     color: #000  ; /* Default text color */
     
