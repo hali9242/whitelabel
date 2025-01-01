@@ -672,7 +672,7 @@ $output .= '      </div>';
 if($data['wlw_general_info_module'][ $key ]['disable_chat'] == "on" || $data['wlw_general_info_module'][ $key ]['disable_chat'] == "Yes") {
 $output .= '<input type="checkbox" class="toggleCheck" name="wlw_general_info_module['.$key.'][disable_chat]" checked="checked" style="padding-top:10px !important">';
   } else {
-//$output .= '<input type="checkbox" class="toggleCheck" name="wlw_general_info_module['.$key.'][disable_chat]" style="padding-top:10px !important">';
+$output .= '<input type="checkbox" class="toggleCheck" name="wlw_general_info_module['.$key.'][disable_chat]" checked="checked" style="padding-top:10px !important">';
   }
 }
   else{
