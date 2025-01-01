@@ -334,8 +334,7 @@ function get_edit_form() {
 			$count++;
 		}
 	}
-	// Log the modules output
-error_log("Modules Output: " . print_r($modules_output, true));
+	
 	$response["modules"] = $modules_output;
 	$response["count_modules"] = $count;
 
