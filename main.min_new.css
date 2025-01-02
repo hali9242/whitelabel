@@ -18638,7 +18638,7 @@ ol.questions {
 	
 	bottom:6px !important;
 }
-.paging-holder .pagination li.disabled: hover {
+li.pg-btn.disabled: hover {
      background-color: transparent !important ; 
 	color: #6BD9DE !important ;
 	
