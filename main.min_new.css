@@ -18638,7 +18638,7 @@ ol.questions {
 	
 	bottom:6px !important;
 }
-li.pg-btn.disabled: hover {
+li.pg-btn.disabled:hover {
      background-color: transparent !important ; 
 	color: #6BD9DE !important ;
 	
