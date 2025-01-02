@@ -8549,9 +8549,14 @@ li.pg-btn-search {
 .progress {
     overflow: hidden
 }
-
+a.pg-btn.prev-btn{
+	padding-top:4px;
+}
 a.pg-btn.prev-btn:hover{
 	background-color: transparent !important;
+}
+a.pg-btn.next-btn{
+	padding-top:4px;
 }
 ul.pagination {
     justify-content: center;
