@@ -18661,7 +18661,7 @@ li.pg-btn {
 	padding-left:3px !important;
 	padding-right:3px !important;
 }
-.paging-holder .pagination li:hover{
+li.pg-btn:hover{
 	 background-color: #6BD9DE  ; /* Hover background color */
     color: #fff ; /* Change text color on hover */
 	border-radius:5px ;
